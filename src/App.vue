@@ -1,28 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import axios from "axios";
+// import jsonp from "jsonp";
 export default {
   name: "app",
-  components: {
-    HelloWorld
-  },
+  components: {},
   data() {
-    return {
-      age: 30
-    };
+    return {};
   },
-  mounted() {
-    let url =
-      "http://api.jirengu.com/readme2html.php?url=https://github.com/jirengu/server-mock";
-    axios.get(url).then(() => {});
-  }
+  mounted() {}
 };
 </script>
 
