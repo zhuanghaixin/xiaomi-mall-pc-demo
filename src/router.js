@@ -25,7 +25,7 @@ export default new Router({
         component: Index,
       }, {
         path: '/product/:id',
-        name: 'prodeuct',
+        name: 'product',
         component: Product
       }, {
         path: '/detail/:id',
