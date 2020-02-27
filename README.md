@@ -1,5 +1,4 @@
 # xiaomi-mall-pc-demo
-## test
 ## Project setup
 ```
 yarn install
