@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "order-footer"
+  name: "OrderHeader"
 };
 </script>
 

@@ -1,10 +1,10 @@
 <template>
-  <div>Footer</div>
+  <div>Header</div>
 </template>
 
 <script>
 export default {
-  name: "nav-footer"
+  name: "NavHeader"
 };
 </script>
 
