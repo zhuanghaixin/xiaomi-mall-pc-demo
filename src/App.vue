@@ -6,13 +6,20 @@
 
 <script>
 // import jsonp from "jsonp";
+import storage from './storage/index.js'
 export default {
   name: "app",
   components: {},
   data() {
     return {};
   },
-  mounted() {}
+  mounted() {
+    // storage.setItem('a',1)
+    // storage.setItem('user',{b:1})
+    // storage.setItem('user',{a:1},'user')
+    storage.clear('sex','user')
+  }
+
 };
 </script>
 
