@@ -36,9 +36,14 @@ export default{
     //清空值
     clear(key,module_name){
         let val=this.getStorage()
-        // eslint-disable-next-line no-console
-        console.log(val);
+        //考虑到val为null,undefined
+        if(!val){
+            return
+        }
+
         if(module_name){
+            //考虑到val[module_name]为null,undefined
+            if(!val[module_name]) return
             delete val[module_name][key]
         }else{
             delete val[key]
