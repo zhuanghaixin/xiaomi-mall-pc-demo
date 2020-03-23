@@ -20,7 +20,12 @@ export default {
     // storage.setItem('user',{b:1})
     // storage.setItem('user',{a:1},'user')
     // storage.clear('sex','user')
-    this.axios.get('/mock/user/login.json').then((res)=>{
+    //第一种，本地加载请求静态json文件的形式
+    // this.axios.get('/mock/user/login.json').then((res)=>{
+    //   this.res=res
+    // })
+    //第二种，通过easy-mock平台实现数据mock
+    this.axios.get('/mock').then((res)=>{
       this.res=res
     })
 

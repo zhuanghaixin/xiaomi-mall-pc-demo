@@ -5,9 +5,11 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 // import env from './env'
-
+// axios.defaults.baseURL='/api'
 //根据前端跨域方式调整,后端域名与前端域名不同的时候要怎么写  后端/a/b
 // axios.defaults.baseURL='https://test-www.imooc/com/api'     //前端 /api/a/b  转发 => /a/b  https://test-www.imooc/com/api/mock/user/login.json 需要注释
+axios.defaults.baseURL=' https://easy-mock.bookset.io/mock/5e7851d0a98e2502f92e9e13/example'
+
 axios.defaults.timeout=8000
 //根据环境变量获取不同的请求地址
 // axios.defaults.baseURL=env.baseURL     //前端 /api/a/b  转发 => /a/b  http://dev-mall-pre.springboot.cn/api/mock/user/login.json 所以要注释
