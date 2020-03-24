@@ -1,4 +1,16 @@
 module.exports = {
+    //scss
+    css: {
+        loaderOptions: {
+            sass: {
+                prependData: `
+     @import '@/assets/scss/config.scss';
+     @import '@/assets/scss/reset.scss';
+        `
+            }
+        }
+    },
+    //接口代理
     devServer: {
         host: 'localhost', //主机
         port: 8080, //端口
@@ -11,6 +23,6 @@ module.exports = {
                 }
             }
         }
-
     }
+
 }
