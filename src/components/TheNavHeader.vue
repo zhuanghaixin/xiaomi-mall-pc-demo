@@ -70,6 +70,7 @@ export default {
             display:inline-block;
             width: 16px;
             height: 12px;
+            margin-right: 4px;
           }
         }
 
