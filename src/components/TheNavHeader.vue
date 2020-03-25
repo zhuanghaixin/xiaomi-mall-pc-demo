@@ -62,13 +62,11 @@
 
 <style lang="scss" scoped>
     @import '../assets/scss/base.scss';
+    @import '../assets/scss/mixin.scss';
     /*可以不需要引入scss，因为在vue.config.js引入了*/
     /*@import '../assets/scss/config.scss';*/
-    /*顶部导航*/
-    body {
-        background-color: #ccc;
-    }
 
+    /*顶部导航*/
     .header {
         .nav-topbar {
             height: 39px;
@@ -81,8 +79,7 @@
                 /*width: 1226px;*/
                 /*margin-right: auto;*/
                 /*margin-left: auto;*/
-                display: flex;
-                justify-content: space-between;
+                @include flex();
                 a {
                     display: inline-block;
                     color: #B0B0B0;
@@ -98,11 +95,7 @@
                     background: #ff6600;
                     text-align: center;
                     .icon-cart {
-                        background: url('/imgs/icon-cart-checked.png') center center no-repeat;
-                        background-size: contain;
-                        display: inline-block;
-                        width: 16px;
-                        height: 12px;
+                        @include bgImg(16px,12px,'/imgs/icon-cart-checked.png',contain);
                         margin-right: 4px;
                     }
                 }
@@ -119,9 +112,8 @@
             /*}*/
             .container {
                 height: 112px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                @include flex();
+
             }
 
             .header-logo {
@@ -137,22 +129,14 @@
                     height: 55px;
                     &:before {
                         content: '';
-                        display: inline-block;
-                        width: 55px;
-                        height: 55px;
-                        background: url('/imgs/mi-home.png') no-repeat center;
-                        background-size: contain;
+                        @include bgImg(55px,55px,'/imgs/mi-home.png',contain);
                         margin-left: -55px;
                         transition: all .3s;
                         opacity: 0;
                     }
                     &:after {
                         content: '';
-                        display: inline-block;
-                        width: 55px;
-                        height: 55px;
-                        background: url('/imgs/mi-logo.png') no-repeat center;
-                        background-size: contain;
+                        @include bgImg(55px,55px,'/imgs/mi-logo.png',contain);
                         transition: all .3s;
                     }
 
@@ -235,18 +219,13 @@
 
                             .icon-search {
                                 transition: all .5s;
-                                background: url('/imgs/icon-search副本.png') no-repeat center;
-                                background-size: contain;
+                                @include bgImg(18px,18px,'/imgs/icon-search副本.png',contain);
                             }
 
                         }
 
                         .icon-search {
-                            display: inline-block;
-                            height: 18px;
-                            width: 18px;
-                            background: url('/imgs/icon-search.png') no-repeat center;
-                            background-size: contain;
+                            @include bgImg(18px,18px,'/imgs/icon-search.png',contain);
                             margin-right: auto;
                             margin-left: auto;
 
