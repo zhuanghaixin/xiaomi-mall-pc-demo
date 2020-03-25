@@ -31,7 +31,7 @@
                         <div class="children"></div>
                     </div>
                     <div class="item-menu">
-                        <span>ReadMi红米</span>
+                        <span>RedMi红米</span>
                         <div class="children"></div>
                     </div>
                     <div class="item-menu">
@@ -83,7 +83,6 @@
                 /*margin-left: auto;*/
                 display: flex;
                 justify-content: space-between;
-
                 a {
                     display: inline-block;
                     color: #B0B0B0;
@@ -93,13 +92,11 @@
                         color: #ffffff;
                     }
                 }
-
                 .my-cart {
                     width: 100px;
                     color: #ffffff;
                     background: #ff6600;
                     text-align: center;
-
                     .icon-cart {
                         background: url('/imgs/icon-cart-checked.png') center center no-repeat;
                         background-size: contain;
@@ -134,12 +131,10 @@
                 background-color: #ff6600;
                 /*隐藏元素*/
                 overflow: hidden;
-
                 a {
                     display: inline-block;
                     width: 110px; //两张图片移动
                     height: 55px;
-
                     &:before {
                         content: '';
                         display: inline-block;
@@ -181,6 +176,8 @@
                 display: inline-block;
                 /*width: 640px;*/
                 /*padding-left: 200px;*/
+                flex-basis: 467px;
+                /*background-color:#f00;*/
 
 
                 .item-menu {
@@ -190,7 +187,7 @@
                     font-size: 16px;
                     font-weight: bold;
                     margin-left: 20px;
-
+                    line-height: 112px;
                     span {
                         cursor: pointer;
                     }
@@ -255,7 +252,6 @@
 
                         }
                     }
-
 
                 }
             }
