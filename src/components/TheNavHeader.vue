@@ -28,7 +28,52 @@
                 <div class="header-menu">
                     <div class="item-menu">
                         <span>小米手机</span>
-                        <div class="children"></div>
+                        <div class="children">
+                            <ul>
+                                <li class="product">
+                                    <a href="/#/product/31" target="_blank">
+                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
+                                        <div class="product-name">小米CC9</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="/#/product/31" target="_blank">
+                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
+                                        <div class="product-name">小米CC9</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="/#/product/31" target="_blank">
+                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
+                                        <div class="product-name">小米CC9</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="/#/product/31" target="_blank">
+                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
+                                        <div class="product-name">小米CC9</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="/#/product/31" target="_blank">
+                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
+                                        <div class="product-name">小米CC9</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="/#/product/31" target="_blank">
+                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
+                                        <div class="product-name">小米CC9</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>RedMi红米</span>
@@ -80,6 +125,7 @@
                 /*margin-right: auto;*/
                 /*margin-left: auto;*/
                 @include flex();
+
                 a {
                     display: inline-block;
                     color: #B0B0B0;
@@ -89,13 +135,15 @@
                         color: #ffffff;
                     }
                 }
+
                 .my-cart {
                     width: 100px;
                     color: #ffffff;
                     background: #ff6600;
                     text-align: center;
+
                     .icon-cart {
-                        @include bgImg(16px,12px,'/imgs/icon-cart-checked.png',contain);
+                        @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png', contain);
                         margin-right: 4px;
                     }
                 }
@@ -113,6 +161,7 @@
             .container {
                 height: 112px;
                 @include flex();
+                position: relative;
 
             }
 
@@ -123,20 +172,23 @@
                 background-color: #ff6600;
                 /*隐藏元素*/
                 overflow: hidden;
+
                 a {
                     display: inline-block;
                     width: 110px; //两张图片移动
                     height: 55px;
+
                     &:before {
                         content: '';
-                        @include bgImg(55px,55px,'/imgs/mi-home.png',contain);
+                        @include bgImg(55px, 55px, '/imgs/mi-home.png', contain);
                         margin-left: -55px;
                         transition: all .3s;
                         opacity: 0;
                     }
+
                     &:after {
                         content: '';
-                        @include bgImg(55px,55px,'/imgs/mi-logo.png',contain);
+                        @include bgImg(55px, 55px, '/imgs/mi-logo.png', contain);
                         transition: all .3s;
                     }
 
@@ -147,6 +199,7 @@
                         transition: all .3s;
 
                     }
+
                     &:hover:after {
                         margin-left: 55px;
                         opacity: 0;
@@ -172,6 +225,7 @@
                     font-weight: bold;
                     margin-left: 20px;
                     line-height: 112px;
+
                     span {
                         cursor: pointer;
                     }
@@ -184,6 +238,72 @@
                         /*}*/
                     }
 
+                    .children {
+                        position: absolute;
+                        top: 112px;
+                        left: 0;
+                        width: 1226px;
+                        height: 220px;
+                        border-top: 1px solid #E5E5E5;
+                        box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+                        ul {
+                            display: flex;
+                            justify-content: space-evenly;
+                            .product {
+                                width: 16.7%;
+                                height: 220px;
+                                font-size: 12px;
+                                line-height: 12px;
+                                text-align: center;
+                                position: relative;
+
+                                a {
+                                    display: inline-block;
+                                    height: 220px;
+                                }
+
+                                img {
+                                    width: auto;
+                                    height: 111px;
+                                    margin-top: 26px;
+                                }
+
+                                .product-img {
+                                }
+
+                                .product-name {
+                                    font-weight: bold;
+                                    margin-top: 19px;
+                                    margin-bottom: 8px;
+                                    color: $colorB;
+                                }
+
+                                .product-price {
+                                    color: $colorA;
+                                }
+
+                                &:after {
+                                    content: ' ';
+                                    display: inline-block;
+                                    position: absolute;
+                                    top:28px;
+                                    right:0px;
+                             /*       position: relative;
+                                    top:-56px;
+                                    margin-left: 20px;*/
+
+                                    background-color: $colorF;
+                                    height: 100px;
+                                    width: 1px;
+
+                                }
+
+                                &:last-child:after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -219,13 +339,13 @@
 
                             .icon-search {
                                 transition: all .5s;
-                                @include bgImg(18px,18px,'/imgs/icon-search副本.png',contain);
+                                @include bgImg(18px, 18px, '/imgs/icon-search副本.png', contain);
                             }
 
                         }
 
                         .icon-search {
-                            @include bgImg(18px,18px,'/imgs/icon-search.png',contain);
+                            @include bgImg(18px, 18px, '/imgs/icon-search.png', contain);
                             margin-right: auto;
                             margin-left: auto;
 

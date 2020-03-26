@@ -1,5 +1,5 @@
  <template>
-  <div>放index的内容</div>
+  <div></div>
 </template>
 
 <script>
