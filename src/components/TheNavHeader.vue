@@ -81,7 +81,64 @@
                     </div>
                     <div class="item-menu">
                         <span>电视</span>
-                        <div class="children"></div>
+                        <div class="children">
+                            <ul>
+                                <li class="product">
+                                    <a href="" target="_blank">
+                                        <div class="product-img">
+                                            <img src="/imgs/nav-img/nav-3-1.jpg" alt="">
+                                        </div>
+                                        <div class="product-name">小米壁画电视 65英寸</div>
+                                        <div class="product-price">6999元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="" target="_blank">
+                                        <div class="product-img">
+                                            <img src="/imgs/nav-img/nav-3-2.jpg" alt="">
+                                        </div>
+                                        <div class="product-name">小米全面屏电视E55A</div>
+                                        <div class="product-price">1999元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="" target="_blank">
+                                        <div class="product-img">
+                                            <img src="/imgs/nav-img/nav-3-3.png" alt="">
+                                        </div>
+                                        <div class="product-name">小米电视4A 32英寸</div>
+                                        <div class="product-price">699元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="" target="_blank">
+                                        <div class="product-img">
+                                            <img src="/imgs/nav-img/nav-3-4.jpg" alt="">
+                                        </div>
+                                        <div class="product-name">小米电视4A 55英寸</div>
+                                        <div class="product-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="" target="_blank">
+                                        <div class="product-img">
+                                            <img src="/imgs/nav-img/nav-3-5.jpg" alt="">
+                                        </div>
+                                        <div class="product-name">小米电视4A 65英寸</div>
+                                        <div class="product-price">2699元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="" target="_blank">
+                                        <div class="product-img">
+                                            <img src="/imgs/nav-img/nav-3-6.png" alt="">
+                                        </div>
+                                        <div class="product-name">查看全部</div>
+                                        <div class="product-price">查看全部</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="header-search">
@@ -228,27 +285,35 @@
 
                     span {
                         cursor: pointer;
+
                     }
 
                     &:hover {
                         color: $colorA;
-                        /*.children {*/
-                        /*    height: 220px;*/
-                        /*    opacity: 1;*/
-                        /*}*/
+
+                        .children {
+                            height: 220px;
+                            opacity: 1;
+                        }
                     }
+
 
                     .children {
                         position: absolute;
                         top: 112px;
                         left: 0;
                         width: 1226px;
-                        height: 220px;
-                        border-top: 1px solid #E5E5E5;
+                        transition: all .5s;
+                        height: 0px;
+                        opacity: 0;
+                        overflow: hidden;
                         box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+
                         ul {
                             display: flex;
                             justify-content: space-evenly;
+                            border-top: 1px solid #E5E5E5;
+
                             .product {
                                 width: 16.7%;
                                 height: 220px;
@@ -286,11 +351,11 @@
                                     content: ' ';
                                     display: inline-block;
                                     position: absolute;
-                                    top:28px;
-                                    right:0px;
-                             /*       position: relative;
-                                    top:-56px;
-                                    margin-left: 20px;*/
+                                    top: 28px;
+                                    right: 0px;
+                                    /*       position: relative;
+                                           top:-56px;
+                                           margin-left: 20px;*/
 
                                     background-color: $colorF;
                                     height: 100px;
