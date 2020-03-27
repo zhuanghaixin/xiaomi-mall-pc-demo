@@ -158,7 +158,8 @@
 
 <script>
     export default {
-        name: "NavHeader"
+        name: "NavHeader",
+
     };
 </script>
 
