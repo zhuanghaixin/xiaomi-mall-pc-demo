@@ -6,13 +6,13 @@
   </div>
 </template>
 <script>
-import NavHeader from "../components/TheNavHeader";
-import NavFooter from "../components/TheNavFooter";
-export default {
-  name: "nav-home",
-  components: {
-    NavHeader,
-    NavFooter
-  }
-};
+  import NavHeader from "../components/TheNavHeader";
+  import NavFooter from "../components/TheNavFooter";
+  export default {
+    name: "NavHome",
+    components: {
+      NavHeader,
+      NavFooter
+    }
+  };
 </script>
