@@ -25,9 +25,9 @@ export default {
     //   this.res=res
     // })
     //第二种，通过easy-mock平台实现数据mock
-    this.axios.get('/user/login').then((res)=>{
-      this.res=res
-    })
+    // this.axios.get('/user/login').then((res)=>{
+    //   this.res=res
+    // })
     //第三种，本地集成mockjs进123行mock
     // this.axios.get('/user/login').then((res)=>{
     //   this.res=res

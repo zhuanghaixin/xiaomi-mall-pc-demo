@@ -10,9 +10,12 @@
 
                 </div>
                 <div class="topbar-user">
-                    <a href="javascript:;">登录</a>
-                    <a href="javascript:;">注册</a>
-                    <a href="javascript:;" class="my-cart">
+                    <a href="javascript:;" v-if="username">{{username}}</a>
+                    <a href="javascript:;" v-if="username">退出</a>
+                    <a href="javascript:;" v-if="!username" @click="navigateTo('cart')">登录</a>
+                    <a href="javascript:;" v-if="!username">注册</a>
+                    <a href="javascript:;" v-if="username">我的订单</a>
+                    <a href="javascript:;" class="my-cart" @click="navigateTo('cart')">
                         <span class="icon-cart"></span>
                         购物车
                     </a>
@@ -30,46 +33,11 @@
                         <span>小米手机</span>
                         <div class="children">
                             <ul>
-                                <li class="product">
-                                    <a href="/#/product/31" target="_blank">
-                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
-                                        <div class="product-name">小米CC9</div>
-                                        <div class="product-price">1799元</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="/#/product/31" target="_blank">
-                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
-                                        <div class="product-name">小米CC9</div>
-                                        <div class="product-price">1799元</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="/#/product/31" target="_blank">
-                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
-                                        <div class="product-name">小米CC9</div>
-                                        <div class="product-price">1799元</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="/#/product/31" target="_blank">
-                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
-                                        <div class="product-name">小米CC9</div>
-                                        <div class="product-price">1799元</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="/#/product/31" target="_blank">
-                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
-                                        <div class="product-name">小米CC9</div>
-                                        <div class="product-price">1799元</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="/#/product/31" target="_blank">
-                                        <div class="product-img"><img src="/imgs/nav-img/nav-1.png" alt=""></div>
-                                        <div class="product-name">小米CC9</div>
-                                        <div class="product-price">1799元</div>
+                                <li class="product" v-for="(item,index) in phoneList" :key="index">
+                                    <a :href="'/#/product/'+item.id" target="_blank">
+                                        <div class="product-img"><img :src="item.mainImage" alt=""></div>
+                                        <div class="product-name">{{item.name}}</div>
+                                        <div class="product-price">{{item.price | currency}}</div>
                                     </a>
                                 </li>
                             </ul>
@@ -159,6 +127,58 @@
 <script>
     export default {
         name: "NavHeader",
+        filters:{
+            //金额格式化
+            currency(val){
+                if(!val) return '0.00'
+                return '¥'+val.toFixed(2)+"元"
+            }
+
+        },
+        data() {
+            return {
+                username: '',
+                phoneList: []
+            }
+        },
+        mounted() {
+            this.getProductList()
+        },
+        methods: {
+            //获取产品手机列表
+            getProductList() {
+                this.axios.get('/products', {
+                    params: {
+                        categoryId: '100012'
+                    }
+                }).then((res) => {
+                    // eslint-disable-next-line no-console
+                    console.log('res')
+                    // eslint-disable-next-line no-console
+                    console.log(res.list)
+
+                    if (res.list.length > 6) {
+                        this.phoneList = res.list.slice(0, 6)
+                        // eslint-disable-next-line no-console
+                        console.log(this.phoneList)
+                    }
+                })
+            },
+            //跳转购物处
+            goToCart(){
+                this.$router.push('cart')
+            },
+            //跳转登录处
+            login(){
+                this.$router.push('login')
+            },
+            //合并
+            navigateTo(name){
+                this.$router.push(name)
+            }
+
+
+        }
 
     };
 </script>
