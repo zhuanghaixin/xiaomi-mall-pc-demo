@@ -32,7 +32,7 @@ export default {
 
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:flex-start;
     height:234px;
     border-top:4px solid $colorA;
     background-color:$colorB;
