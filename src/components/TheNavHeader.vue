@@ -299,7 +299,7 @@
                     /*display:flex;*/
                     display: inline-block;
                     color: #333;
-                    font-size: 16px;
+                    font-size: $fontI;
                     font-weight: bold;
                     margin-left: 20px;
                     line-height: 112px;
