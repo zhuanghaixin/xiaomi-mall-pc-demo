@@ -327,6 +327,7 @@
                         transition: all .5s;
                         height: 0px;
                         opacity: 0;
+                        z-index:10;
                         overflow: hidden;
                         box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
                         background-color:#fff;
