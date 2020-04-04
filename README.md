@@ -2,7 +2,7 @@
 基于vueJS开发的高仿小米商城项目
 ## 技术栈
 ```
- Vue.js + Vue-router + Vuex + Webpack + Axios + Sass
+ Vue.js + Vue-router + Vuex + Webpack + Axios + Sass + Element
 ```
 ## 项目介绍  
 项目使用vue.js进行开发，目前已经完成基本的交互与页面。包括登录页面、商城首页、产品介绍、添加购物车、订单提交等。
