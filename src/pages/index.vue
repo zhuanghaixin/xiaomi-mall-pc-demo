@@ -72,13 +72,33 @@
                     <img src='/imgs/banner-1.png' alt="">
                 </a>
             </div>
-            <div class="product-box"></div>
-            <div></div>
-            <div>
-                <p>
-                    <a href></a>
-                </p>
-                <p class="header"></p>
+
+        </div>
+        <div class="product-box">
+            <div class="container">
+                <h2>手机</h2>
+                <div class="wrapper">
+                    <div class="banner-left">
+                        <a href="/#/product/35"><img src="/imgs/mix-alpha.jpg" alt=""></a>
+                    </div>
+                    <div class="list-box">
+                        <div class="list" v-for="(arr,i ) in phoneList" :key="i">
+                            <div class="item" v-for="(item,j) in arr" :key="j">
+                                <span class="new-pro">新品</span>
+<!--                                <span>减200元</span>-->
+                                <div class="item-img">
+                                    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6f2493e6c6fe8e2485c407e5d75e3651.jpg"
+                                         alt="">
+                                </div>
+                                <div class="item-info">
+                                    <h3>小米9</h3>
+                                    <p>6400万全场景四摄</p>
+                                    <p class="price">2999元</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <ServiceBar/>
@@ -137,95 +157,100 @@
                 menuListPhone: [
                     [
                         {
-                            id:30,
-                            img:'/imgs/item-box-1.png',
-                            name:'小米CC9'
+                            id: 30,
+                            img: '/imgs/item-box-1.png',
+                            name: '小米CC9'
                         },
                         {
-                            id:31,
-                            img:'/imgs/item-box-2.png',
-                            name:'小米8青春版'
+                            id: 31,
+                            img: '/imgs/item-box-2.png',
+                            name: '小米8青春版'
                         },
                         {
-                            id:31,
-                            img:'/imgs/item-box-3.jpg',
-                            name:'小米8青春版'
+                            id: 31,
+                            img: '/imgs/item-box-3.jpg',
+                            name: '小米8青春版'
                         },
                         {
-                            id:33,
-                            img:'/imgs/item-box-4.jpg',
-                            name:'移动4G专区'
+                            id: 33,
+                            img: '/imgs/item-box-4.jpg',
+                            name: '移动4G专区'
                         },
                         {
-                            id:31,
-                            img:'/imgs/item-box-3.jpg',
-                            name:'小米8青春版'
+                            id: 31,
+                            img: '/imgs/item-box-3.jpg',
+                            name: '小米8青春版'
                         },
                         {
-                            id:33,
-                            img:'/imgs/item-box-4.jpg',
-                            name:'移动4G专区'
+                            id: 33,
+                            img: '/imgs/item-box-4.jpg',
+                            name: '移动4G专区'
                         }
                     ],
-                    [0,0,0,0,0,0],
-                    [0,0,0,0,0,0],
-                    [0,0,0,0,0],
+                    [0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0],
 
                 ],
                 menuListTV: [
                     [
                         {
-                            id:30,
-                            img:'/imgs/nav-img/nav-3-1.jpg',
-                            name:'小米壁画电视 55寸'
+                            id: 30,
+                            img: '/imgs/nav-img/nav-3-1.jpg',
+                            name: '小米壁画电视 55寸'
                         },
                         {
-                            id:31,
-                            img:'/imgs/nav-img/nav-3-2.jpg',
-                            name:'小米全面屏55A'
+                            id: 31,
+                            img: '/imgs/nav-img/nav-3-2.jpg',
+                            name: '小米全面屏55A'
                         },
                         {
-                            id:31,
-                            img:'/imgs/nav-img/nav-3-3.png',
-                            name:'小米电视4A 32寸'
+                            id: 31,
+                            img: '/imgs/nav-img/nav-3-3.png',
+                            name: '小米电视4A 32寸'
                         },
                         {
-                            id:33,
-                            img:'/imgs/nav-img/nav-3-4.jpg',
-                            name:'小米电视4A 55寸'
+                            id: 33,
+                            img: '/imgs/nav-img/nav-3-4.jpg',
+                            name: '小米电视4A 55寸'
                         },
                         {
-                            id:33,
-                            img:'/imgs/nav-img/nav-3-4.jpg',
-                            name:'小米电视4A 55寸'
+                            id: 33,
+                            img: '/imgs/nav-img/nav-3-4.jpg',
+                            name: '小米电视4A 55寸'
                         },
                         {
-                            id:33,
-                            img:'/imgs/nav-img/nav-3-4.jpg',
-                            name:'小米电视4A 55寸'
+                            id: 33,
+                            img: '/imgs/nav-img/nav-3-4.jpg',
+                            name: '小米电视4A 55寸'
                         },
                     ],
-                    [0,0,0,0,0,0],
-                    [0,0,0,0],
+                    [0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0],
 
                 ],
-                adsList:[
+                adsList: [
                     {
-                        id:33,
-                        img:'/imgs/ads/ads-1.png'
+                        id: 33,
+                        img: '/imgs/ads/ads-1.png'
                     },
                     {
-                        id:48,
-                        img:'/imgs/ads/ads-2.jpg'
+                        id: 48,
+                        img: '/imgs/ads/ads-2.jpg'
                     },
                     {
-                        id:45,
-                        img:'/imgs/ads/ads-3.png'
+                        id: 45,
+                        img: '/imgs/ads/ads-3.png'
                     },
                     {
-                        id:47,
-                        img:'/imgs/ads/ads-4.jpg'
+                        id: 47,
+                        img: '/imgs/ads/ads-4.jpg'
                     }
+                ],
+                phoneList: [
+                    [1, 1, 1, 1],
+                    [1, 1, 1, 1],
+
                 ]
 
             };
@@ -242,10 +267,7 @@
 
     .index {
         .container {
-
-
             .swiper-box {
-
                 .swiper-container {
                     height: 451px;
 
@@ -314,12 +336,15 @@
                         .menu-item {
                             height: 50px;
                             line-height: 50px;
+
                             &:hover {
                                 background: $colorA;
-                                .children{
-                                display:flex;
+
+                                .children {
+                                    display: flex;
                                 }
                             }
+
                             a {
                                 position: relative;
                                 display: block;
@@ -337,40 +362,44 @@
 
                                 }
                             }
-                            .children{
-                                display:none;
+
+                            .children {
+                                display: none;
                                 /*width:962px;*/
                                 height: 451px;
                                 /*display:flex;*/
-                                background-color:$colorG;
-                                position:absolute;
+                                background-color: $colorG;
+                                position: absolute;
                                 /*flex-direction: column;*/
-                                top:0;
-                                left:264px;
+                                top: 0;
+                                left: 264px;
                                 /*z-index:11;*/
                                 border: 1px solid $colorH;
-                                ul{
-                                    display:flex;
+
+                                ul {
+                                    display: flex;
                                     justify-content: space-between;
-                                    flex-direction:column;
+                                    flex-direction: column;
                                     height: 75px;
-                                    li{
+
+                                    li {
                                         height: 75px;
                                         line-height: 75px;
                                         /*flex:1;*/
                                         /*display:flex;*/
                                         /*flex-direction:column;*/
-                                       /* background-color:$colorG;*/
+                                        /* background-color:$colorG;*/
                                         width: 240px;
 
-                                        a{
-                                            color:$colorB;
+                                        a {
+                                            color: $colorB;
                                             font-size: 14px;
                                         }
-                                        img{
+
+                                        img {
                                             width: 42px;
                                             height: 35px;
-                                            vertical-align:middle;
+                                            vertical-align: middle;
                                             margin-right: 15px;
                                         }
                                     }
@@ -381,22 +410,138 @@
 
                 }
             }
-            .ads-box{
-                margin-top:14px;
+
+            .ads-box {
+                margin-top: 14px;
                 margin-bottom: 31px;
                 @include flex();
-                a{
+
+                a {
                     width: 296px;
                     height: 167px;
-                    img{
+
+                    img {
 
                     }
                 }
             }
-            .banner{
+
+            .banner {
                 margin-bottom: 50px;
             }
 
         }
+
+        .product-box {
+            /*width: 1920px;*/
+            /*height: 740px; //内容撑开高都*/
+            padding: 30px 0 50px;
+            background-color: $colorJ;
+
+            .container {
+                h2 {
+                    font-size: $fontF;
+                    height: 21px;
+                    line-height: 21px;
+                    color: $colorB;
+                    margin-bottom: 20px;
+                }
+
+                .wrapper {
+                    display: flex;
+
+                    .banner-left {
+                        margin-right: 16px;
+
+                        a {
+                            width: 224px;
+                            height: 619px;
+                            display: block;
+
+                            img {
+                                //base.scss
+                            }
+                        }
+                    }
+
+                    .list-box {
+                        .list {
+                            width: 986px;
+                            @include flex();
+                            margin-bottom: 14px;
+
+                            &:last-child {
+                                margin-bottom: 0px;
+                            }
+
+                            .item {
+                                width: 236px;
+                                height: 302px;
+                                background: $colorG;
+                                text-align: center;
+
+                                span {
+                                    display:inline-block;
+                                    width: 67px;
+                                    height: 24px;
+                                    line-height: 24px;
+                                    /*color:$colorG;*/
+                                    font-size:14px;
+                                    &.new-pro{
+                                        background-color:#7ECF68;
+                                    }
+                                    &.kill-pro{
+                                        background-color:#E82626;
+                                    }
+
+                                }
+
+                                .item-img {
+                                    height: 195px;
+
+                                    img {
+                                        height: 195px;
+                                    }
+                                }
+
+                                .item-info {
+                                    h3 {
+                                        font-size: $fontJ;
+                                        color: $colorB;
+                                        line-height: 14px;
+                                        font-weight: bold;
+                                    }
+
+                                    p {
+                                        color: $colorD;
+                                        line-height: 13px;
+                                        margin: 6px auto 13px;
+                                    }
+
+                                    .price {
+                                        color: #F20A0A;
+                                        font-size: $fontJ;
+                                        font-weight: bold;
+                                        cursor: pointer;
+
+                                        &:after {
+                                            content: '';
+                                            @include bgImg(22px, 22px, '/imgs/icon-cart-hover.png');
+                                            vertical-align: text-bottom;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+
     }
+
 </style>
