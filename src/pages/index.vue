@@ -85,7 +85,7 @@
                         <div class="list" v-for="(arr,i ) in phoneList" :key="i">
                             <div class="item" v-for="(item,j) in arr" :key="j">
                                 <span :class="{'new-pro':j%2==0}">新品</span>
-<!--                                <span>减200元</span>-->
+                                <!--                                <span>减200元</span>-->
                                 <div class="item-img">
                                     <img :src=item.mainImage
                                          alt="">
@@ -102,12 +102,26 @@
             </div>
         </div>
         <ServiceBar/>
+        <Modal
+                modalType="medium"
+                title="提示"
+                btnType="1"
+                sureText="查看购物车"
+                :cancelText="{text:'取消了',show:true}"
+                :showModal=true
+        >
+            <template v-slot:body>
+                <p>
+                    你好，{{bodyText}}
+                </p>
+            </template>
+        </Modal>
     </div>
 </template>
 <script>
     import "swiper/css/swiper.css";
     import {swiper, swiperSlide} from "vue-awesome-swiper";
-
+    import Modal from '../components/Modal.vue'
     import ServiceBar from "../components/TheServiceBar.vue";
 
     export default {
@@ -115,13 +129,14 @@
         components: {
             ServiceBar,
             swiper,
-            swiperSlide
+            swiperSlide,
+            Modal
         },
-        filters:{
+        filters: {
             //金额格式化
-            currency(val){
-                if(!val) return '0.00'
-                return '¥'+val.toFixed(2)+"元"
+            currency(val) {
+                if (!val) return '0.00'
+                return '¥' + val.toFixed(2) + "元"
             }
 
         },
@@ -255,23 +270,24 @@
                         img: '/imgs/ads/ads-4.jpg'
                     }
                 ],
-                phoneList: []
+                phoneList: [],
+                bodyText: '商品添加成功'
 
             };
         },
-        mounted(){
+        mounted() {
             this.getProductList()
         },
-        methods:{
-            getProductList(){
-                this.axios.get('/products',{
-                    params:{
-                        categoryId:'100012',
-                        pageSize:14  //前6条给nav-header提供使用
+        methods: {
+            getProductList() {
+                this.axios.get('/products', {
+                    params: {
+                        categoryId: '100012',
+                        pageSize: 14  //前6条给nav-header提供使用
                     }
-                }).then((res)=>{
-                    res.list=res.list.slice(6,14)  //后几条为list-box使用
-                    this.phoneList=[res.list.slice(0,4),res.list.slice(4,8)]
+                }).then((res) => {
+                    res.list = res.list.slice(6, 14)  //后几条为list-box使用
+                    this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
                 })
             }
         }
@@ -501,18 +517,26 @@
                                 background: $colorG;
                                 text-align: center;
                                 position: relative;
+                                &:hover{
+                                    /*cursor: pointer;*/
+                                    box-shadow: 0 15px 30px rgba(0,0,0,.1);
+                                    transform: translate3d(0,-2px,0);
+                                    transition:all .3s;
+                                }
                                 span {
-                                    display:inline-block;
+                                    display: inline-block;
                                     width: 67px;
                                     height: 24px;
                                     line-height: 24px;
-                                    color:$colorG;
-                                    font-size:14px;
-                                    &.new-pro{
-                                        background-color:#7ECF68;
+                                    color: $colorG;
+                                    font-size: 14px;
+
+                                    &.new-pro {
+                                        background-color: #7ECF68;
                                     }
-                                    &.kill-pro{
-                                        background-color:#E82626;
+
+                                    &.kill-pro {
+                                        background-color: #E82626;
                                     }
 
                                 }
@@ -520,7 +544,7 @@
                                 .item-img {
                                     img {
                                         width: 100%;
-                                        height:195px;
+                                        height: 195px;
                                     }
                                 }
 
