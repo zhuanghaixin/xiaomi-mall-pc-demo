@@ -25,6 +25,8 @@ axios.defaults.timeout=8000
 
 //错误拦截
 axios.interceptors.response.use(function(response){
+  // // eslint-disable-next-line no-console
+  // console.log(response)
    let res= response.data
   if(res.status==0){   //status:0 成功  status:10 未登录
     return res.data

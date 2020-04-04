@@ -84,16 +84,16 @@
                     <div class="list-box">
                         <div class="list" v-for="(arr,i ) in phoneList" :key="i">
                             <div class="item" v-for="(item,j) in arr" :key="j">
-                                <span class="new-pro">新品</span>
+                                <span :class="{'new-pro':j%2==0}">新品</span>
 <!--                                <span>减200元</span>-->
                                 <div class="item-img">
-                                    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6f2493e6c6fe8e2485c407e5d75e3651.jpg"
+                                    <img :src=item.mainImage
                                          alt="">
                                 </div>
                                 <div class="item-info">
-                                    <h3>小米9</h3>
-                                    <p>6400万全场景四摄</p>
-                                    <p class="price">2999元</p>
+                                    <h3>{{item.name}}</h3>
+                                    <p>{{item.subtitle}}</p>
+                                    <p class="price">{{item.price | currency}}</p>
                                 </div>
                             </div>
                         </div>
@@ -116,6 +116,14 @@
             ServiceBar,
             swiper,
             swiperSlide
+        },
+        filters:{
+            //金额格式化
+            currency(val){
+                if(!val) return '0.00'
+                return '¥'+val.toFixed(2)+"元"
+            }
+
         },
         data() {
             return {
@@ -247,14 +255,26 @@
                         img: '/imgs/ads/ads-4.jpg'
                     }
                 ],
-                phoneList: [
-                    [1, 1, 1, 1],
-                    [1, 1, 1, 1],
-
-                ]
+                phoneList: []
 
             };
+        },
+        mounted(){
+            this.getProductList()
+        },
+        methods:{
+            getProductList(){
+                this.axios.get('/products',{
+                    params:{
+                        categoryId:'100012',
+                        pageSize:8
+                    }
+                }).then((res)=>{
+                    this.phoneList=[res.list.slice(0,4),res.list.slice(4,8)]
+                })
+            }
         }
+
     };
 </script>
 <style scoped lang="scss">
@@ -479,13 +499,13 @@
                                 height: 302px;
                                 background: $colorG;
                                 text-align: center;
-
+                                position: relative;
                                 span {
                                     display:inline-block;
                                     width: 67px;
                                     height: 24px;
                                     line-height: 24px;
-                                    /*color:$colorG;*/
+                                    color:$colorG;
                                     font-size:14px;
                                     &.new-pro{
                                         background-color:#7ECF68;
@@ -497,10 +517,9 @@
                                 }
 
                                 .item-img {
-                                    height: 195px;
-
                                     img {
-                                        height: 195px;
+                                        width: 100%;
+                                        height:195px;
                                     }
                                 }
 
