@@ -23,11 +23,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .footer-bottom{
-   position:absolute;
-    bottom:0px;
-    width: 100%;
-  }
+  /*.footer-bottom{*/
+  /* position:absolute;*/
+  /*  bottom:0px;*/
+  /*  width: 100%;*/
+  /*}*/
   .footer{
 
     display:flex;
