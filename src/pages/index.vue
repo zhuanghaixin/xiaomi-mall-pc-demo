@@ -267,9 +267,10 @@
                 this.axios.get('/products',{
                     params:{
                         categoryId:'100012',
-                        pageSize:8
+                        pageSize:14  //前6条给nav-header提供使用
                     }
                 }).then((res)=>{
+                    res.list=res.list.slice(6,14)  //后几条为list-box使用
                     this.phoneList=[res.list.slice(0,4),res.list.slice(4,8)]
                 })
             }
