@@ -1,5 +1,6 @@
 <template>
-  <div class="footer-bottom">
+<!--  下方两个:class-->
+  <div>
     <div class="footer">
       <div class="footer-logo">
         <img src="/imgs/logo-footer.png" alt="">
@@ -18,16 +19,22 @@
 
 <script>
 export default {
-  name: "NavFooter"
+  name: "NavFooter",
+  props:{
+    loginStyle:{
+      type:Object
+    }
+  },
+  mounted() {
+    // eslint-disable-next-line no-console
+    console.log(this.loginStyle)
+    // eslint-disable-next-line no-console
+    console.log(typeof this.loginStyle)
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-  /*.footer-bottom{*/
-  /* position:absolute;*/
-  /*  bottom:0px;*/
-  /*  width: 100%;*/
-  /*}*/
   .footer{
 
     display:flex;

@@ -12,7 +12,7 @@
                 <div class="topbar-user">
                     <a href="javascript:;" v-if="username">{{username}}</a>
                     <a href="javascript:;" v-if="username">退出</a>
-                    <a href="javascript:;" v-if="!username" @click="navigateTo('cart')">登录</a>
+                    <a href="javascript:;" v-if="!username" @click="navigateTo('login')">登录</a>
                     <a href="javascript:;" v-if="!username">注册</a>
                     <a href="javascript:;" v-if="username">我的订单</a>
                     <a href="javascript:;" class="my-cart" @click="navigateTo('cart')">

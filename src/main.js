@@ -4,6 +4,7 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
 import App from './App.vue'
 // import env from './env'
 
@@ -34,7 +35,10 @@ axios.interceptors.response.use(function(response){
   }else if(res.status==10){
     window.location.href ='/#/login'
   }else{
+    alert('main.js错误拦截')
     alert(res.msg)  //弹出报错信息
+    // 当我们输入不正确用户名还是会进入res,所以我们要用Promise.reject()
+    return Promise.reject(res);
   }
 })
 //注册 加载插件
@@ -47,6 +51,11 @@ Vue.use(VueLazyload, {
   loading: '/imgs/loading-svg/loading-bars.svg',
   attempt: 1
 })
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
+
+
+
 //生产环境提示
 Vue.config.productionTip = false
 
