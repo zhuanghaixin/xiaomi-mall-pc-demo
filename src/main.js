@@ -3,6 +3,7 @@ import store from './store'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueLazyload from 'vue-lazyload'
 import App from './App.vue'
 // import env from './env'
 
@@ -38,6 +39,14 @@ axios.interceptors.response.use(function(response){
 })
 //注册 加载插件
 Vue.use(VueAxios,axios)
+
+//注册VueLazyload
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'dist/error.png',
+  loading: '/imgs/loading-svg/loading-bars.svg',
+  attempt: 1
+})
 //生产环境提示
 Vue.config.productionTip = false
 
