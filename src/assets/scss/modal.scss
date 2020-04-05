@@ -1,49 +1,70 @@
-.modal{
+.modal {
   @include position(fixed);
-  background-color:rgba(0,0,0,.5);
+  //background-color:rgba(0,0,0,.5);
+  z-index: 10;
+  transition:all 1s;
+  .mask {
+    @include position(fixed);
+    background-color: $colorI;
+    opacity: 0.5;
+  }
+  &.slide-enter{
+    top:-100%
+  }
+  &.slide-enter-to{
+    top:0%;
 
-  z-index:11;
-  .modal-dialog{
-    @include position(absolute,50%,50%,600px,auto);
-    transform:translate(-50%,-50%);
-    background-color:$colorG;
-    .modal-header{
+  }
+  &.slide-leave-to{
+    top:-100%;
+  }
+  .modal-dialog {
+    //z-index:12;
+    @include position(absolute, 50%, 50%, 600px, auto);
+    transform: translate(-50%, -50%);
+    background-color: $colorG;
+
+    .modal-header {
       height: 60px;
-      background:$colorJ;
-      padding:0 25px;
+      background: $colorJ;
+      padding: 0 25px;
       line-height: 60px;
-      font-size:$fontI;
+      font-size: $fontI;
       //图标
-      .icon-close{
-        @include positionImg(absolute,23px,25px,14px,14px,'/imgs/icon-close.png',contain);
-        transition:transform .3s;
-        &:hover{
-          transform:scale(2);
+      .icon-close {
+        @include positionImg(absolute, 23px, 25px, 14px, 14px, '/imgs/icon-close.png', contain);
+        transition: transform .3s;
+
+        &:hover {
+          transform: scale(2);
         }
       }
     }
-    .modal-body{
-      padding:42px 40px 54px;
-      font-size:14px
+
+    .modal-body {
+      padding: 42px 40px 54px;
+      font-size: 14px
 
     }
-    .modal-footer{
+
+    .modal-footer {
       height: 82px;
       background-color: $colorJ;
-      display:flex;
-      justify-content:center;
+      display: flex;
+      justify-content: center;
       align-items: center;
-/*      .btn{
-        display:inline-block;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        width: 160px;
-        background-color:$colorA;
-        color:$colorG;
-        font-size:$fontI;
-      }*/
+      /*      .btn{
+              display:inline-block;
+              height: 40px;
+              text-align: center;
+              line-height: 40px;
+              width: 160px;
+              background-color:$colorA;
+              color:$colorG;
+              font-size:$fontI;
+            }*/
     }
   }
+
 
 }

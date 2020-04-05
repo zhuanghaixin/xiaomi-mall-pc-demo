@@ -93,7 +93,7 @@
                                 <div class="item-info">
                                     <h3>{{item.name}}</h3>
                                     <p>{{item.subtitle}}</p>
-                                    <p class="price">{{item.price | currency}}</p>
+                                    <p class="price" @click="addCart(item.id)">{{item.price | currency}}</p>
                                 </div>
                             </div>
                         </div>
@@ -105,10 +105,12 @@
         <Modal
                 modalType="medium"
                 title="提示"
-                btnType="1"
+                btnType="3"
                 sureText="查看购物车"
-                :cancelText="{text:'取消了',show:true}"
-                :showModal=true
+                cancelText="取消"
+                :showModal=showModal
+                @submit="goToCart"
+                @cancel="showModal=false"
         >
             <template v-slot:body>
                 <p>
@@ -271,7 +273,8 @@
                     }
                 ],
                 phoneList: [],
-                bodyText: '商品添加成功'
+                bodyText: '商品添加成功',
+                showModal:false
 
             };
         },
@@ -289,6 +292,25 @@
                     res.list = res.list.slice(6, 14)  //后几条为list-box使用
                     this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
                 })
+            },
+            addCart(id){
+                this.showModal=true
+                return;
+                // eslint-disable-next-line no-unreachable
+                this.axios.post('/carts',{
+                    productId:id,
+                    selected: true
+                }).then((res)=>{
+                    // eslint-disable-next-line no-console
+                    console.log(res)
+                }).catch(()=>{
+                    this.showModal=true
+                    // eslint-disable-next-line no-console
+                    console.log(this.showModal)
+                })
+            },
+            goToCart(){
+                this.$router.push('cart')
             }
         }
 
