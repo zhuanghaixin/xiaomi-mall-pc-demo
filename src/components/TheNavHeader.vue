@@ -219,6 +219,7 @@
                     color: #ffffff;
                     background: #ff6600;
                     text-align: center;
+                    margin-right: 0px;
 
                     .icon-cart {
                         @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png', contain);
