@@ -71,7 +71,7 @@
                     // eslint-disable-next-line no-console
                     console.log(res)
                     this.$cookie.set('userId', res.id, {expires: '1Y'});
-                    //to-do 保存用户名
+                    //TODO 保存用户名
                     this.$router.push('index')
                 }).catch((err)=>{
                     // eslint-disable-next-line no-console

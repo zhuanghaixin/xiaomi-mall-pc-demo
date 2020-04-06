@@ -32,7 +32,21 @@ export default {
     // this.axios.get('/user/login').then((res)=>{
     //   this.res=res
     // })
+  },
+  methods:{
+    //拉取用户信息
+    getUser(){
+      this.axios.get('/user').then((res)=>{
+        //TODO 保存到vuex里面
+      })
+    },
+    //拉取购物车数量
+    getCartCount(){
+      this.axios.get('/carts/products/sum').then((res)=>{
+        //TODO 保存到vuex里面
 
+      })
+    }
   }
 
 };
