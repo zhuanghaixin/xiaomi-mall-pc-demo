@@ -16,7 +16,7 @@
                         <input type="password" placeholder="请输入密码" v-model="password">
                     </div>
                     <div class="btn-box">
-                        <a href="javascript:;" class="btn" @click="login">登录</a>
+                        <a href="javascript:" class="btn" @click="login">登录</a>
                     </div>
                     <div class="tips">
                         <div class="sms" @click="register">手机短信登录/注册</div>

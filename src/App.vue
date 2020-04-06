@@ -12,7 +12,7 @@ export default {
   components: {},
   data() {
     return {
-      res:{}
+      res: {}
     };
   },
   mounted() {
@@ -32,24 +32,28 @@ export default {
     // this.axios.get('/user/login').then((res)=>{
     //   this.res=res
     // })
+    this.getUser()
+    this.getCartCount()
   },
-  methods:{
+  methods: {
     //拉取用户信息
-    getUser(){
-      this.axios.get('/user').then((res)=>{
+    getUser() {
+      // eslint-disable-next-line no-unused-vars
+      this.axios.get('/user').then((res) => {
         //TODO 保存到vuex里面
       })
     },
     //拉取购物车数量
-    getCartCount(){
-      this.axios.get('/carts/products/sum').then((res)=>{
+    getCartCount() {
+      // eslint-disable-next-line no-unused-vars
+      this.axios.get('/carts/products/sum').then((res) => {
         //TODO 保存到vuex里面
-
       })
     }
   }
 
 };
+
 </script>
 
 <style lang="scss">

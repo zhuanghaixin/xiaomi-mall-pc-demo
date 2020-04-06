@@ -5,7 +5,7 @@
                 <div class="nav-menu">
                     <ul class="menu-wrap">
                         <li class="menu-item">
-                            <a href="javascript:;">手机 电话卡</a>
+                            <a href="javascript:">手机 电话卡</a>
                             <div class="children">
                                 <ul v-for="(item ,i) in menuListPhone" :key="i">
                                     <li v-for="(sub,j) in item" :key="j">
@@ -18,7 +18,7 @@
                             </div>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">电视 盒子</a>
+                            <a href="javascript:">电视 盒子</a>
                             <div class="children">
                                 <ul v-for="(item ,i) in menuListTV" :key="i">
                                     <li v-for="(sub,j) in item" :key="j">
@@ -31,22 +31,22 @@
                             </div>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">笔记本 显示器 平板</a>
+                            <a href="javascript:">笔记本 显示器 平板</a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">家电 插线板</a>
+                            <a href="javascript:">家电 插线板</a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">出行 穿戴</a>
+                            <a href="javascript:">出行 穿戴</a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">智能 路由器</a>
+                            <a href="javascript:">智能 路由器</a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">电源 配件</a>
+                            <a href="javascript:">电源 配件</a>
                         </li>
                         <li class="menu-item">
-                            <a href="javascript:;">生活 箱包</a>
+                            <a href="javascript:">生活 箱包</a>
                         </li>
                     </ul>
                 </div>

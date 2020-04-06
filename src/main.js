@@ -30,10 +30,14 @@ axios.interceptors.response.use(function(response){
   // // eslint-disable-next-line no-console
   // console.log(response)
    let res= response.data
+  //fixme 无论登录还是未登录都可以访问首页
+  let path=location.hash
   if(res.status==0){   //status:0 成功  status:10 未登录
     return res.data
   }else if(res.status==10){
-    window.location.href ='/#/login'
+    if(path!='#/index'){
+      window.location.href ='/#/login'
+    }
   }else{
     alert('main.js错误拦截')
     alert(res.msg)  //弹出报错信息
@@ -41,6 +45,7 @@ axios.interceptors.response.use(function(response){
     return Promise.reject(res);
   }
 })
+
 //注册 加载插件
 Vue.use(VueAxios,axios)
 
