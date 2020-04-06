@@ -17,7 +17,7 @@
                     <a href="javascript:" v-if="username">我的订单</a>
                     <a href="javascript:" class="my-cart" @click="navigateTo('cart')">
                         <span class="icon-cart"></span>
-                        购物车
+                        购物车({{cartCount}})
                     </a>
 
                 </div>
@@ -125,6 +125,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: "NavHeader",
         filters:{
@@ -137,9 +138,22 @@
         },
         data() {
             return {
-                username: '',
                 phoneList: []
             }
+        },
+        computed:{
+            // username(){
+            //     return this.$store.state.username
+            // },
+            // cartCount(){
+            //     return this.$store.state.cartCount
+            // }
+            //fixme 使用mapState简化代码
+            ...mapState([
+                'username',
+                'cartCount'
+            ])
+
         },
         mounted() {
             this.getProductList()

@@ -66,12 +66,9 @@
                         password
                     }).then((res) => {
                         // this.res=res
-                    // eslint-disable-next-line no-console
-                    console.log('login_res')
-                    // eslint-disable-next-line no-console
-                    console.log(res)
                     this.$cookie.set('userId', res.id, {expires: '1Y'});
                     //TODO 保存用户名
+                    this.$store.dispatch('saveUserName',res.username)
                     this.$router.push('index')
                 }).catch((err)=>{
                     // eslint-disable-next-line no-console

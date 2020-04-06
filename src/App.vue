@@ -7,6 +7,7 @@
 <script>
 // import jsonp from "jsonp";
 // import storage from './storage/index.js'
+import {mapActions} from 'vuex'
 export default {
   name: "app",
   components: {},
@@ -38,9 +39,11 @@ export default {
   methods: {
     //拉取用户信息
     getUser() {
-      // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars,no-console
       this.axios.get('/user').then((res) => {
-        //TODO 保存到vuex里面
+        //TODO 保存用户信息到vuex里面
+        // this.$store.dispatch('saveUserName',res.username)
+        this.saveUserName(res.username)
       })
     },
     //拉取购物车数量
@@ -48,8 +51,14 @@ export default {
       // eslint-disable-next-line no-unused-vars
       this.axios.get('/carts/products/sum').then((res) => {
         //TODO 保存到vuex里面
+        // this.$store.dispatch('saveCartCount',res)
+        this.saveCartCount(res)
       })
-    }
+    },
+    ...mapActions([
+            'saveUserName',
+            'saveCartCount'
+    ])
   }
 
 };
