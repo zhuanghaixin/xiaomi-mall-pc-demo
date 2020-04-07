@@ -5,6 +5,18 @@
         <button class="btn">立即购买</button>
       </template>
     </ProductParam>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
+    <div class="h">123</div>
     <div>传的参数{{id}}</div>
 
   </div>
@@ -34,5 +46,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.h{
+  height: 150px;
+  /*background-color:#f00;*/
+}
 </style>

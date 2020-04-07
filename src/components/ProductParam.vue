@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="nav-bar">
+        <div class="nav-bar" :class="{'is-fixed':isFixed}">
             <div class="container">
                 <div class="pro-title">
                     小米8
@@ -20,7 +20,25 @@
 
 <script>
     export default {
-        name: "ProductParam"
+        name: "ProductParam",
+        data(){
+            return{
+                isFixed:false
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll',this.initHeight)
+        },
+        methods:{
+            initHeight(){
+                let scrollTop=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop
+                this.isFixed=scrollTop>152?true:false
+            }
+        },
+        destroyed() {
+                window.removeEventListener('scroll',this.initHeight,false)
+        }
+
     }
 </script>
 
@@ -32,7 +50,19 @@
         line-height: 70px;
         border-top: 1px solid $colorH;
         border-bottom: 1px solid $colorH;
+        background-color:#fff;
+        &.is-fixed{
+            position:fixed;
+            top:0;
+            width: 100%;
+            /*padding: 10px 0;*/
+            z-index:12;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+            /*color: #3d4451;*/
 
+            transition:all 1s;
+
+        }
         .container {
             @include flex();
             .pro-title{
