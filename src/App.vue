@@ -40,7 +40,7 @@ export default {
     //拉取用户信息
     getUser() {
       // eslint-disable-next-line no-unused-vars,no-console
-      this.axios.get('/user').then((res) => {
+      this.axios.get('/user').then((res={}) => {
         //TODO 保存用户信息到vuex里面
         // this.$store.dispatch('saveUserName',res.username)
         this.saveUserName(res.username)
@@ -49,7 +49,7 @@ export default {
     //拉取购物车数量
     getCartCount() {
       // eslint-disable-next-line no-unused-vars
-      this.axios.get('/carts/products/sum').then((res) => {
+      this.axios.get('/carts/products/sum').then((res=0) => {
         //TODO 保存到vuex里面
         // this.$store.dispatch('saveCartCount',res)
         this.saveCartCount(res)
