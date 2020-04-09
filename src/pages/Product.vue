@@ -33,9 +33,13 @@
                     <swiper-slide><img src="/imgs/product/gallery-5.jpg" alt=""></swiper-slide>
                     <swiper-slide><img src="/imgs/product/gallery-6.jpg" alt=""></swiper-slide>
                     <!-- Optional controls -->
+
+<!--                    <div class="swiper-pagination custom-pagination" slot="pagination"></div>-->
+
+
+                </swiper>
+                <swiper :options="swiperOption" class="x">
                     <div class="swiper-pagination custom-pagination" slot="pagination"></div>
-
-
                 </swiper>
                 <p class="desc">小米8 AI变焦双摄拍摄</p>
             </div>
@@ -90,6 +94,7 @@
                     spaceBetween: 30,
                     loop: true,
                     freeMode: true,
+                    autoHeight:true,
                     pagination: {
 
                         el: '.swiper-pagination',
@@ -145,9 +150,7 @@
 </script>
 
 <style lang="scss">
-    .swiper-container {
-        height: 405px;
-    }
+
     .product {
         .content {
             .item-bg {
@@ -201,36 +204,48 @@
             }
             .item-swiper {
                 margin: 36px auto 52px;
-
-                .custom-pagination {
-                    left: 0;
-                    width: 100%;
+                .swiper-container {
+                    /*height: 405px;*/
+                    /*width: 1226px;*/
+                    /*width: 1920px;*/
+                    /*overflow-y:visible;*/
+                    /*overflow:visible;*/
+                    img {
+                        width: 100%;
+                    }
                 }
+
+                    .custom-pagination {
+                        bottom: 0px;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+
 
                 .desc {
                     font-size: 18px;
                     color: $colorB;
                     text-align: center;
                 }
+                .x{
+                    height: 54px;
+                    line-height: 54px;
+                    /*background-color:#f00;*/
+                    .my-bullet {
+                        /*border-radius: 50%;*/
+                        width: 26.7px;
+                        height: 3px;
+                        margin: 7.5px;
+                        display: inline-block;
+                        background: $colorE;
+                    }
 
-                .my-bullet {
-                    /*border-radius: 50%;*/
-                    width: 26.7px;
-                    height: 3px;
-                    margin: 7.5px;
-                    display: inline-block;
-                    background: $colorE;
+                    .my-bullet-active {
+                        background: $colorC;
+                        width: 26.7px;
+                    }
                 }
-
-                .my-bullet-active {
-                    background: $colorC;
-                    width: 26.7px;
-                }
-
-                img {
-                    width: 100%;
-                }
-
 
             }
             .item-video {

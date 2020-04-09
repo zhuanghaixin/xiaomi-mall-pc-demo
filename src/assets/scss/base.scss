@@ -17,3 +17,15 @@ input{
   box-sizing:border-box;
   font-size:14px;
 }
+
+.fl{
+  float:left;
+}
+.rl{
+  float:right;
+}
+.clearfix:after{
+  content:" ";
+  display:block;
+  clear:both;
+}
