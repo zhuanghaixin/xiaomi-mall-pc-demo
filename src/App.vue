@@ -53,6 +53,7 @@ export default {
         //TODO 保存到vuex里面
         // this.$store.dispatch('saveCartCount',res)
         this.saveCartCount(res)
+
       })
     },
     ...mapActions([

@@ -54,7 +54,6 @@
         height: 70px;
         line-height: 70px;
         border-top: 1px solid $colorH;
-        border-bottom: 1px solid $colorH;
         background-color:#fff;
         &.is-fixed{
             position:fixed;

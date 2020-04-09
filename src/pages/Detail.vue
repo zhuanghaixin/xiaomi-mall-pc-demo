@@ -11,7 +11,10 @@
                         <swiper-slide><img src="/imgs/detail/phone-3.jpg" alt=""></swiper-slide>
                         <swiper-slide><img src="/imgs/detail/phone-4.jpg" alt=""></swiper-slide>
                         <!-- Optional controls -->
-                        <div class="swiper-pagination" slot="pagination"></div>
+<!--                        <div class="swiper-pagination" slot="pagination"></div>-->
+                    </swiper>
+                    <swiper :options="swiperOption" class="x" clearfix>
+                        <div class="swiper-pagination custom-pagination" slot="pagination" clearfix></div>
                     </swiper>
                 </div>
                 <div class="content">
@@ -28,8 +31,8 @@
                     </div>
                     <div class="item-version clearfix">
                         <h2>选择版本</h2>
-                        <div class="phone fl">6GB+64GB 全网通</div>
-                        <div class="phone fr">4GB+64GB 移动4G</div>
+                        <div class="phone fl" :class="{'checked':version==1}" @click="version=1">6GB+64GB 全网通</div>
+                        <div class="phone fr" :class="{'checked':version==2}" @click="version=2">4GB+64GB 移动4G</div>
                     </div>
                     <div class="item-color">
                         <h2>选择颜色</h2>
@@ -46,7 +49,7 @@
                         <div class="phone-total">总计：{{product.price}}元</div>
                     </div>
                     <div class="btn-group">
-                        <a href="javascript:;" class="btn btn-huge fl">加入购物车</a>
+                        <a href="javascript:;" class="btn btn-huge fl" @click="addCart">加入购物车</a>
                     </div>
                 </div>
             </div>
@@ -104,25 +107,24 @@
                     this.product = res
                 })
             },
-            // addCart(){
-            //     this.axios.post('/carts',{
-            //         productId:this.id,
-            //         selected: true
-            //     }).then((res={cartProductVoList:0})=>{
-            //         this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
-            //         // this.$router.push('/cart');
-            //     });
-            // }
+            addCart(){
+                this.axios.post('/carts',{
+                    productId:this.id,
+                    selected: true
+                }).then((res={cartProductVoList:0})=>{
+                    this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
+                    // this.$router.push('/cart');
+                }).catch((res)=>{
+                    this.error=res
+                })
+            }
         }
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     @import "../assets/scss/base.scss";
     @import "../assets/scss/mixin.scss";
-
-
-
     .detail {
         .wrapper {
 
@@ -132,42 +134,58 @@
                 .swiper-container {
                     width: 642px;
                     height: 617px;
+                    img {
+                        width: 100%;
+                        height:100%;
+                    }
+                    &.x {
+                        height: 54px;
+                        line-height: 54px;
+                        /*background-color:#f00;*/
+                        overflow: hidden;
+                    }
+                    .my-bullet {
+                        /*border-radius: 50%;*/
+                        width: 26.7px;
+                        height: 3px;
+                        margin: 7.5px;
+                        display: inline-block;
+                        background: $colorE;
+                        cursor: pointer;
+                    }
+
+                    .my-bullet-active {
+                        background: $colorC;
+                        width: 26.7px;
+                    }
                 }
-                img {
+                .custom-pagination {
+                    bottom: 0px;
                     width: 100%;
-                    /*height:100%;*/
+                    height: 100%;
+
                 }
-                .my-bullet {
-                    /*border-radius: 50%;*/
-                    width: 26.7px;
-                    height: 3px;
-                    margin: 7.5px;
-                    display: inline-block;
-                    background: $colorE;
-                }
-                .my-bullet-active {
-                    background: $colorC;
-                    width: 26.7px;
-                }
+
+
+
             }
 
             .content {
                 float: right;
                 width: 584px;
                 height: 870px;
-
                 .item-title {
                     font-size: 28px;
-                    padding-top: 30px;
-                    padding-bottom: 16px;
-                    height: 26px;
-                }
+                   margin-top: 30px;
 
+                    height: 26px;
+                    line-height: 26px;
+                }
                 .item-info {
+                    margin-top: 16px;
                     font-size: 14px;
                     height: 36px;
                 }
-
                 .delivery {
                     font-size: 16px;
                     color: #FF6700;
@@ -175,12 +193,10 @@
                     margin-bottom: 14px;
                     height: 15px;
                 }
-
                 .item-price {
                     font-size: 20px;
                     color: #FF6700;
                     height: 19px;
-
                     .del {
                         font-size: 16px;
                         color: #999999;
@@ -188,14 +204,12 @@
                         text-decoration: line-through;
                     }
                 }
-
                 .line {
                     height: 0;
                     margin-top: 25px;
                     margin-bottom: 28px;
                     border-top: 1px solid #E5E5E5;
                 }
-
                 .item-addr {
                     height: 108px;
                     background-color: #FAFAFA;
@@ -206,7 +220,6 @@
                     font-size: 14px;
                     line-height: 14px;
                     position: relative;
-
                     .icon-loc {
                         position: absolute;
                         top: 27px;

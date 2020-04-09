@@ -34,9 +34,7 @@
                     <swiper-slide><img src="/imgs/product/gallery-6.jpg" alt=""></swiper-slide>
                     <!-- Optional controls -->
 
-<!--                    <div class="swiper-pagination custom-pagination" slot="pagination"></div>-->
-
-
+                    <!--                    <div class="swiper-pagination custom-pagination" slot="pagination"></div>-->
                 </swiper>
                 <swiper :options="swiperOption" class="x">
                     <div class="swiper-pagination custom-pagination" slot="pagination"></div>
@@ -48,15 +46,15 @@
                 <p>后置960帧电影般超慢动作视频，将眨眼间的美妙展现得淋漓尽致！<br/>更能AI 精准分析视频内容，15个场景智能匹配背景音效。</p>
                 <div class="video-bg" @click="openVideo"></div>
                 <div class="video-box" v-show="showSlide">
-                    <div class="overlay" ></div>
-                    <div class="video" v-bind:class="showSlide" >
+                    <div class="overlay"></div>
+                    <div class="video" v-bind:class="showSlide">
                         <span class="icon-close" @click="closeVideo"></span>
-                        <video src="/imgs/product/video.mp4"  muted autoplay controls="controls" id="player"></video>
+                        <video src="/imgs/product/video.mp4" muted autoplay controls="controls" id="player"></video>
                     </div>
                 </div>
             </div>
         </div>
-<!--        <div>传的参数{{id}}</div>-->
+        <!--        <div>传的参数{{id}}</div>-->
 
     </div>
 </template>
@@ -94,12 +92,13 @@
                     spaceBetween: 30,
                     loop: true,
                     freeMode: true,
-                    autoHeight:true,
+                    autoHeight: true,
                     pagination: {
 
                         el: '.swiper-pagination',
                         bulletClass: 'my-bullet',
-                        bulletActiveClass: 'my-bullet-active'
+                        bulletActiveClass: 'my-bullet-active',
+                        clickable: true
                     }
 
                 },
@@ -117,32 +116,32 @@
         mounted() {
             this.getProductInfo()
         },
-        methods:{
+        methods: {
             openVideo() {
-                this.showSlide='slideDown'
+                this.showSlide = 'slideDown'
                 var player = document.getElementById("player");
                 player.play();
             },
 
-            closeVideo(){
-                this.showSlide='slideUp';
+            closeVideo() {
+                this.showSlide = 'slideUp';
                 var player = document.getElementById("player");
                 player.pause();
 
-                setTimeout(()=>{
-                    this.showSlide='';
-                },600)
+                setTimeout(() => {
+                    this.showSlide = '';
+                }, 600)
             },
             //获取产品信息
-            getProductInfo(){
-                let id =this.id
-                this.axios.get(`/products/${id}`).then((res)=>{
-                   this.product=res
+            getProductInfo() {
+                let id = this.id
+                this.axios.get(`/products/${id}`).then((res) => {
+                    this.product = res
                 })
             },
-            buy(){
-                let id=this.id
-                this.$router.push({name:'detail',params:id})
+            buy() {
+                let id = this.id
+                this.$router.push({name: 'detail', params: id})
             }
         }
 
@@ -192,18 +191,22 @@
                     }
                 }
             }
+
             .item-bg-2 {
                 background: url(/imgs/product/product-bg-2.png) no-repeat center;
                 height: 480px;
                 background-size: 1226px 397px;
             }
+
             .item-bg-3 {
                 background: url(/imgs/product/product-bg-3.png) no-repeat center;
                 height: 638px;
                 background-size: cover;
             }
+
             .item-swiper {
                 margin: 36px auto 52px;
+
                 .swiper-container {
                     /*height: 405px;*/
                     /*width: 1226px;*/
@@ -213,56 +216,58 @@
                     img {
                         width: 100%;
                     }
-                }
+                    &.x {
+                        height: 54px;
+                        line-height: 54px;
+                        /*background-color:#f00;*/
+                        .my-bullet {
+                            /*border-radius: 50%;*/
+                            width: 26.7px;
+                            height: 3px;
+                            margin: 7.5px;
+                            display: inline-block;
+                            background: $colorE;
+                            cursor: pointer;
+                        }
 
-                    .custom-pagination {
-                        bottom: 0px;
-                        width: 100%;
-                        height: 100%;
+                        .my-bullet-active {
+                            background: $colorC;
+                            width: 26.7px;
+                        }
                     }
+                }
+                .custom-pagination {
+                    bottom: 0px;
+                    width: 100%;
+                    height: 100%;
 
-
+                }
 
                 .desc {
                     font-size: 18px;
                     color: $colorB;
                     text-align: center;
                 }
-                .x{
-                    height: 54px;
-                    line-height: 54px;
-                    /*background-color:#f00;*/
-                    .my-bullet {
-                        /*border-radius: 50%;*/
-                        width: 26.7px;
-                        height: 3px;
-                        margin: 7.5px;
-                        display: inline-block;
-                        background: $colorE;
-                    }
-
-                    .my-bullet-active {
-                        background: $colorC;
-                        width: 26.7px;
-                    }
-                }
-
             }
+
             .item-video {
                 height: 1044px;
                 background-color: #070708;
                 margin-bottom: 76px;
                 color: #FFFFFF;
                 text-align: center;
+
                 h2 {
                     font-size: 60px;
                     padding-top: 82px;
                     margin-bottom: 47px;
                 }
+
                 p {
                     font-size: 24px;
                     margin-bottom: 58px;
                 }
+
                 .video-bg {
                     background: url('/imgs/product/gallery-1.png') no-repeat center;
                     background-size: cover;
@@ -271,6 +276,7 @@
                     margin: 0 auto 120px;
                     cursor: pointer;
                 }
+
                 /*TODO video样式*/
                 .video-box {
                     .overlay {
@@ -288,14 +294,16 @@
                         z-index: 14;
                         width: 1000px;
                         height: 536px;
-                        background:#f00;
+                        background: #f00;
                         opacity: 1;
+
                         video {
                             width: 100%;
                             height: 100%;
                             object-fit: cover;
                             outline: none;
                         }
+
                         &.slideDown {
                             animation: slideDown .6s linear;
                             animation-fill-mode: forwards;
@@ -314,6 +322,7 @@
                             cursor: pointer;
                             z-index: 11;
                         }
+
                         @keyframes slideDown {
                             from {
                                 top: -50%;
