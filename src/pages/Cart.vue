@@ -1,11 +1,21 @@
- <template>
-  <div>cart</div>
+<template>
+    <div>
+        <OrderHeader></OrderHeader>
+        <NavFooter/>
+    </div>
 </template>
 
 <script>
-export default {
-  name: "Cart"
-};
+    import NavFooter from "../components/TheNavFooter";
+    import OrderHeader from '../components/OrderHeader.vue';
+
+    export default {
+        name: "Cart",
+        components: {
+            NavFooter,
+            OrderHeader
+        }
+    };
 </script>
 
 <style lang="scss" scoped>
