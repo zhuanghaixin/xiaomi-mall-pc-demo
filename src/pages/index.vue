@@ -274,7 +274,7 @@
                 ],
                 phoneList: [],
                 bodyText: '商品添加成功',
-                showModal:false
+                showModal: false
 
             };
         },
@@ -293,23 +293,19 @@
                     this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
                 })
             },
-            addCart(id){
-                this.showModal=true
-                return;
-                // eslint-disable-next-line no-unreachable
-                this.axios.post('/carts',{
-                    productId:id,
+            addCart(id) {
+                //todo 添加购物车 保存vuex
+                this.axios.post('/carts', {
+                    productId: id,
                     selected: true
-                }).then((res)=>{
-                    // eslint-disable-next-line no-console
-                    console.log(res)
-                }).catch(()=>{
-                    this.showModal=true
-                    // eslint-disable-next-line no-console
-                    console.log(this.showModal)
+                }).then((res) => {
+                    this.showModal = true
+                    this.$store.dispatch("saveCartCount",res.cartTotalQuantity)
+                }).catch(() => {
+                    this.showModal = true
                 })
             },
-            goToCart(){
+            goToCart() {
                 this.$router.push('cart')
             }
         }
@@ -403,14 +399,12 @@
                                     display: flex;
                                 }
                             }
-
                             a {
                                 position: relative;
                                 display: block;
                                 font-size: 16px;
                                 color: #ffffff;
                                 padding-left: 30px;
-
                                 &:after {
                                     position: absolute;
                                     right: 30px;
@@ -421,7 +415,6 @@
 
                                 }
                             }
-
                             .children {
                                 display: none;
                                 /*width:962px;*/
@@ -434,13 +427,11 @@
                                 left: 264px;
                                 /*z-index:11;*/
                                 border: 1px solid $colorH;
-
                                 ul {
                                     display: flex;
                                     justify-content: space-between;
                                     flex-direction: column;
                                     height: 75px;
-
                                     li {
                                         height: 75px;
                                         line-height: 75px;
@@ -449,12 +440,10 @@
                                         /*flex-direction:column;*/
                                         /* background-color:$colorG;*/
                                         width: 240px;
-
                                         a {
                                             color: $colorB;
                                             font-size: 14px;
                                         }
-
                                         img {
                                             width: 42px;
                                             height: 35px;
@@ -474,29 +463,23 @@
                 margin-top: 14px;
                 margin-bottom: 31px;
                 @include flex();
-
                 a {
                     width: 296px;
                     height: 167px;
-
                     img {
-
                     }
                 }
             }
-
             .banner {
                 margin-bottom: 50px;
             }
 
         }
-
         .product-box {
             /*width: 1920px;*/
             /*height: 740px; //内容撑开高都*/
             padding: 30px 0 50px;
             background-color: $colorJ;
-
             .container {
                 h2 {
                     font-size: $fontF;
@@ -505,45 +488,38 @@
                     color: $colorB;
                     margin-bottom: 20px;
                 }
-
                 .wrapper {
                     display: flex;
-
                     .banner-left {
                         margin-right: 16px;
-
                         a {
                             width: 224px;
                             height: 619px;
                             display: block;
-
                             img {
                                 //base.scss
                             }
                         }
                     }
-
                     .list-box {
                         .list {
                             width: 986px;
                             @include flex();
                             margin-bottom: 14px;
-
                             &:last-child {
                                 margin-bottom: 0px;
                             }
-
                             .item {
                                 width: 236px;
                                 height: 302px;
                                 background: $colorG;
                                 text-align: center;
                                 position: relative;
-                                &:hover{
+                                &:hover {
                                     /*cursor: pointer;*/
-                                    box-shadow: 0 15px 30px rgba(0,0,0,.1);
-                                    transform: translate3d(0,-2px,0);
-                                    transition:all .3s;
+                                    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+                                    transform: translate3d(0, -2px, 0);
+                                    transition: all .3s;
                                 }
                                 span {
                                     display: inline-block;
@@ -552,24 +528,19 @@
                                     line-height: 24px;
                                     color: $colorG;
                                     font-size: 14px;
-
                                     &.new-pro {
                                         background-color: #7ECF68;
                                     }
-
                                     &.kill-pro {
                                         background-color: #E82626;
                                     }
-
                                 }
-
                                 .item-img {
                                     img {
                                         width: 100%;
                                         height: 195px;
                                     }
                                 }
-
                                 .item-info {
                                     h3 {
                                         font-size: $fontJ;
