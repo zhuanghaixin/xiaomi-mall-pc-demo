@@ -31,49 +31,7 @@
         .container{
             margin-right: auto;
             margin-left: auto;
-            .header-logo {
-                display: inline-block;
-                width: 55px;
-                height: 55px;
-                background-color: #ff6600;
-                /*隐藏元素*/
-                overflow: hidden;
 
-                a {
-                    display: inline-block;
-                    width: 110px; //两张图片移动
-                    height: 55px;
-
-                    &:before {
-                        content: '';
-                        @include bgImg(55px, 55px, '/imgs/mi-home.png', contain);
-                        margin-left: -55px;
-                        transition: all .3s;
-                        opacity: 0;
-                    }
-
-                    &:after {
-                        content: '';
-                        @include bgImg(55px, 55px, '/imgs/mi-logo.png', contain);
-                        transition: all .3s;
-                    }
-
-                    &:hover:before {
-                        margin-left: 0px;
-                        opacity: 1;
-                        display: inline-block;
-                        transition: all .3s;
-
-                    }
-
-                    &:hover:after {
-                        margin-left: 55px;
-                        opacity: 0;
-                        transition: all .3s;
-                    }
-
-                }
-            }
         }
 
     }

@@ -149,7 +149,7 @@
                         height: 3px;
                         margin: 7.5px;
                         display: inline-block;
-                        background: $colorE;
+                        background:  $colorE;
                         cursor: pointer;
                     }
 
