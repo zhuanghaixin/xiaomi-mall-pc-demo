@@ -1,12 +1,13 @@
 <template>
     <div class="order-header">
-        <div class="container">
+        <div class="container clearfix">
             <div class="header-logo">
                 <a href="/#/index"></a>
             </div>
             <div class="title">
                 <!--        h2里面要使用插槽，因为每个页面显示都是不同的标题-->
-                <h2>我的购物车 <span>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</span></h2>
+                <h2>{{title}}</h2>
+                <span><slot name="tip"></slot></span>
 
             </div>
             <div class="username">
@@ -19,7 +20,10 @@
 
 <script>
     export default {
-        name: "OrderHeader"
+        name: "OrderHeader",
+        props: {
+            title: String
+        }
     };
 </script>
 
@@ -27,11 +31,48 @@
     @import '../assets/scss/base.css';
     /*@import '../assets/scss/mixin.scss';*/
     .order-header {
-        padding:30px 0;
-        .container{
+        padding: 30px 0;
+        border-bottom: 2px solid #FF6600;
+
+        .container {
             margin-right: auto;
             margin-left: auto;
 
+            .header-logo {
+                float: left;
+            }
+
+            .title, .username {
+                height: 55px;
+                line-height: 55px;
+            }
+
+            .title {
+                float: left;
+                margin-left: 54px;
+
+                h2 {
+                    font-size: 28px;
+                    color: #333333;
+                    display: inline-block;
+                }
+
+                span {
+                    font-size: 14px;
+                    margin-left: 17px;
+                    color: #999999;
+                    font-weight: 200;
+                }
+            }
+
+            .username {
+                float: right;
+
+                a {
+                    color: #666666;
+                    font-size: 16px;
+                }
+            }
         }
 
     }
