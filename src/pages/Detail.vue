@@ -122,12 +122,11 @@
     };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
     @import "../assets/scss/base.scss";
     @import "../assets/scss/mixin.scss";
     .detail {
         .wrapper {
-
             .swiper {
                 float: left;
                 margin-top: 5px;

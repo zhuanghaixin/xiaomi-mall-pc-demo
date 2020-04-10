@@ -187,8 +187,8 @@
                 this.$router.push('login')
             },
             //合并
-            navigateTo(name){
-                this.$router.push(name)
+            navigateTo(routername){
+                this.$router.push({name:routername})
             }
 
 

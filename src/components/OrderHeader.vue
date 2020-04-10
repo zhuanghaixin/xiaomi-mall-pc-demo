@@ -1,6 +1,6 @@
 <template>
     <div class="order-header">
-        <div class="xx">
+        <div class="container">
             <div class="header-logo">
                 <a href="/#/index"></a>
             </div>
@@ -24,11 +24,14 @@
 </script>
 
 <style lang="scss" scoped>
-    /*@import '../assets/scss/base.css';*/
+    @import '../assets/scss/base.css';
     /*@import '../assets/scss/mixin.scss';*/
     .order-header {
         padding:30px 0;
-        .header-logo {
+        .container{
+            margin-right: auto;
+            margin-left: auto;
+            .header-logo {
                 display: inline-block;
                 width: 55px;
                 height: 55px;
@@ -71,5 +74,7 @@
 
                 }
             }
+        }
+
     }
 </style>
