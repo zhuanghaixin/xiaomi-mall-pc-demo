@@ -12,5 +12,8 @@ export default{
     },
     saveCartCount({commit},cartCount){
         commit('saveCartCount',cartCount)
+    },
+    deleteProductItem({commit},item){
+        commit('deleteProductItem',item)
     }
 }

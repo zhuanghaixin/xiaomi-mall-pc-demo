@@ -7,5 +7,8 @@ export default {
     },
     saveCartCount(state,cartCount){
         state.cartCount=cartCount
+    },
+    deleteProductItem(state,item){
+        state.item=item
     }
 }
