@@ -88,28 +88,23 @@
         methods: {
             getCartList() {
                 this.axios.get('/carts').then((res) => {
-                    this.list = res.cartProductVoList || []  //没有返回的话，默认是空数组
-                    this.allChecked = res.selectedAll
-                    this.cartTotalPrice = res.cartTotalPrice
-                    this.cartTotalNum=res.cartTotalQuantity
-                    this.checkedNum=this.list.filter(item=>item.productSelected).reduce((acc,cur)=>{
-                        return acc+cur.quantity
-                    },0)
-
+                    this.renderData(res)
                 })
             },
             toggleAll(){
                 let url=this.allChecked?'/carts/unSelectAll':'/carts/selectAll'
                 this.axios.put(url).then((res)=>{
-                    this.list=res.cartProductVoList || []
-                    //需要对状态重新赋值
-                    this.allChecked = res.selectedAll
-                    this.cartTotalPrice = res.cartTotalPrice
-                    this.cartTotalNum=res.cartTotalQuantity
-                    this.checkedNum=this.list.filter(item=>item.productSelected).reduce((acc,cur)=>{
-                        return acc+cur.quantity
-                    },0)
+                    this.renderData(res)
                 })
+            },
+            renderData(res){
+                this.list=res.cartProductVoList || []
+                this.allChecked = res.selectedAll
+                this.cartTotalPrice = res.cartTotalPrice
+                this.cartTotalNum=res.cartTotalQuantity
+                this.checkedNum=this.list.filter(item=>item.productSelected).reduce((acc,cur)=>{
+                    return acc+cur.quantity
+                },0)
             }
 
 
