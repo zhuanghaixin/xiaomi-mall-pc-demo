@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="cart-box">
                     <ul class="cart-item-head">
-                        <li class="col-1"><span class="checkbox checked" :class="{'checked':allChecked}"></span>全选</li>
+                        <li class="col-1"><span class="checkbox" :class="{'checked':allChecked}" @click="toggleAll"></span>全选</li>
                         <li class="col-3">商品名称</li>
                         <li class="col-1">单价</li>
                         <li class="col-2">数量</li>
@@ -69,6 +69,8 @@
             TheServiceBar
         },
         mounted() {
+            // eslint-disable-next-line no-console
+            // console.log(this.allChecked)
             this.getCartList()
 
 
@@ -95,7 +97,21 @@
                     },0)
 
                 })
+            },
+            toggleAll(){
+                let url=this.allChecked?'/carts/unSelectAll':'/carts/selectAll'
+                this.axios.put(url).then((res)=>{
+                    this.list=res.cartProductVoList || []
+                    //需要对状态重新赋值
+                    this.allChecked = res.selectedAll
+                    this.cartTotalPrice = res.cartTotalPrice
+                    this.cartTotalNum=res.cartTotalQuantity
+                    this.checkedNum=this.list.filter(item=>item.productSelected).reduce((acc,cur)=>{
+                        return acc+cur.quantity
+                    },0)
+                })
             }
+
 
         }
 
