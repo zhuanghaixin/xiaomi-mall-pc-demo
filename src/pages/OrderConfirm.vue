@@ -147,7 +147,7 @@
                     this.cartTotalPrice=res.cartTotalPrice //商品总金额
                     this.cartList=list.filter(item=>item.productSelected)  //过滤选中的商品列表
                     this.cartList.map((item)=>{
-                        this.count += item.quantity;
+                        this.count += item.quantity
                     })
                 })
             },
