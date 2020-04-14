@@ -38,7 +38,7 @@
                                 <div class="street">{{item.receiverProvince + ' ' + item.receiverCity + ' ' + item.receiverDistrict + ' ' + item.receiverAddress}}</div>
                                 <div class="action">
                                     <a href="javascript:;" class="fl">
-                                        <svg class="icon icon-del">
+                                        <svg class="icon icon-del" @click="delAddress(item)">
                                             <use xlink:href="#icon-del"></use>
                                         </svg>
                                     </a>
@@ -106,12 +106,27 @@
                 </div>
             </div>
         </div>
+        <Modal
+                title="删除确认"
+                btnType="1"
+                :showModal="showDelModal"
+                @cancel="showDelModal=false"
+                @submit="submitAddress"
+        >
+            <template v-slot:body>
+             <p>您确认要删除此地址吗？</p>
+            </template>
+        </Modal>
     </div>
 </template>
 
 <script>
+    import Modal from "./../components/Modal"
     export default {
         name: "OrderConfirm",
+        components: {
+            Modal
+        },
         data() {
             return {
                 list: [],    // 收货哦地址列表
@@ -136,11 +151,45 @@
             getAddressList(){
                 this.axios.get('/shippings').then((res)=>{
                     this.list= res.list //获取所有商品列表
+                    this.userAction=2;
+                })
+            },
+            delAddress(item){
+                this.checkedItem=item;
+                this.userAction=2  //表示现在用户行为是删除
+                this.showDelModal=true//将弹框显示出来
+            },
+
+            //地址删除，编辑，新增功能
+            submitAddress(){
+                let {checkedItem,userAction}=this
+                let method,url;
+                if(userAction==0){
+                    method='post'
+                    url=' /shippings'
+                }else if(userAction==1){
+                    method='put'
+                    url=`/shippings/${checkedItem.id}`
+                }else{
+                    method='delete'
+                    url=`/shippings/${checkedItem.id}`
+                }
+                // this.axios.get()
+                //删除
+                this.axios[method](url).then(()=>{
+                    this.closeModal();
+                    //删除以后，重新拉取地址列表
+                    this.getAddressList()
+                    this.$message.success('操作成功')
 
 
                 })
             },
-
+            closeModal(){
+                this.checkedItem={}
+                this.userAction=''
+                this.showModal=false
+            },
             getCartList() {
                 this.axios.get('/carts').then((res) => {
                     let list = res.cartProductVoList   //获取购物车中所有商品数据
@@ -151,6 +200,7 @@
                     })
                 })
             },
+
         }
 
     };
