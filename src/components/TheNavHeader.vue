@@ -11,7 +11,7 @@
                 </div>
                 <div class="topbar-user">
                     <a href="javascript:" v-if="username">{{username}}</a>
-                    <a href="javascript:" v-if="username">退出</a>
+                    <a href="javascript:" v-if="username" @click="logout">退出</a>
                     <a href="javascript:" v-if="!username" @click="navigateTo('login')">登录</a>
                     <a href="javascript:" v-if="!username">注册</a>
                     <a href="javascript:" v-if="username">我的订单</a>
@@ -125,14 +125,16 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import {mapState} from 'vuex'
+    import {mapActions} from 'vuex'
+
     export default {
         name: "NavHeader",
-        filters:{
+        filters: {
             //金额格式化
-            currency(val){
-                if(!val) return '0.00'
-                return '¥'+val.toFixed(2)+"元"
+            currency(val) {
+                if (!val) return '0.00'
+                return '¥' + val.toFixed(2) + "元"
             }
 
         },
@@ -141,7 +143,7 @@
                 phoneList: []
             }
         },
-        computed:{
+        computed: {
             // username(){
             //     return this.$store.state.username
             // },
@@ -156,7 +158,14 @@
 
         },
         mounted() {
-            this.getProductList()
+            this.getProductList();
+            let params=this.$route.params
+            if(params&&params.from=='login'){
+                // eslint-disable-next-line no-console
+                console.log(1)
+                    this.getCartCount();
+            }
+
         },
         methods: {
             //获取产品手机列表
@@ -179,16 +188,43 @@
                 })
             },
             //跳转购物处
-            goToCart(){
+            goToCart() {
                 this.$router.push('cart')
             },
             //跳转登录处
-            login(){
+            login() {
                 this.$router.push('login')
             },
             //合并
-            navigateTo(routername){
-                this.$router.push({name:routername})
+            navigateTo(routername) {
+                this.$router.push({name: routername})
+            },
+            //登出
+            logout() {
+                this.axios.post('/user/logout').then((res = {}) => {
+                    this.phoneList = res.list
+                    this.$message.success('退出成功')
+                    this.$cookie.set('userId', '', {expires: '-1'})//设置cookie为空，cookie立即过期  expires:-1
+                    this.saveUserName(res.username)  //将username为空 存到vuex中
+                    this.saveCartCount(0)  //将购物车清为空 存到vuex中
+                    // this.$router.push({name:'login'})
+                }).catch((err) => {
+                    this.$message.error({err})
+                })
+            },
+            ...mapActions([
+                'saveUserName',
+                'saveCartCount'
+            ]),
+            //拉取购物车数量
+            getCartCount() {
+                // eslint-disable-next-line no-unused-vars
+                this.axios.get('/carts/products/sum').then((res = 0) => {
+                    //TODO 保存到vuex里面
+                    // this.$store.dispatch('saveCartCount',res)
+                    this.saveCartCount(res)
+
+                })
             }
 
 
@@ -259,7 +295,6 @@
             }
 
 
-
             .header-menu {
                 display: inline-block;
                 /*width: 640px;*/
@@ -300,10 +335,10 @@
                         transition: all .5s;
                         height: 0px;
                         opacity: 0;
-                        z-index:10;
+                        z-index: 10;
                         overflow: hidden;
                         box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
-                        background-color:#fff;
+                        background-color: #fff;
 
                         ul {
                             display: flex;

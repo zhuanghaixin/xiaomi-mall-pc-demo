@@ -69,7 +69,13 @@
                     this.$cookie.set('userId', res.id, {expires: '1Y'});
                     //TODO 保存用户名
                     this.$store.dispatch('saveUserName',res.username)
-                    this.$router.push('index')
+                    this.$router.push({
+                        name:'index',
+                        params:{
+                            from:'login'
+                        }
+
+                    })
                 }).catch((err)=>{
                     // eslint-disable-next-line no-console
                     console.log('login_err')
@@ -89,7 +95,8 @@
                     console.log('register_res')
                     // eslint-disable-next-line no-console
                     console.log(res)
-                    alert('注册成功');
+                    // alert('注册成功');
+                    this.$message.success('注册成功')
                 }).catch((err) => {
                     // eslint-disable-next-line no-console
                     console.log('register_err')

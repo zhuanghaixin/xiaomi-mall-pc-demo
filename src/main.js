@@ -5,6 +5,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import {Message } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 // import env from './env'
 
@@ -40,8 +42,10 @@ axios.interceptors.response.use(function(response){
       return Promise.reject(res)
     }
   }else{
-    alert('main.js错误拦截')
-    alert(res.msg)  //弹出报错信息
+    // alert('main.js错误拦截')
+    Message.warning('main.js错误拦截')
+    // alert(res.msg)  //弹出报错信息
+    Message.warning(res.msg)
     // 当我们输入不正确用户名还是会进入res,所以我们要用Promise.reject()
     return Promise.reject(res);
   }
@@ -59,7 +63,10 @@ Vue.use(VueLazyload, {
 })
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
-
+//注册Element UI
+// Vue.use(ElementUI);
+//只引入Message,并全局使用
+Vue.prototype.$message = Message;
 
 
 //生产环境提示
