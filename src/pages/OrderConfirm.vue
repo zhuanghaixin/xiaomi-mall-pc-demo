@@ -143,7 +143,7 @@
 
             getCartList() {
                 this.axios.get('/carts').then((res) => {
-                    let list = res.cartProductVoList  //获取购物车中所有商品数据
+                    let list = res.cartProductVoList   //获取购物车中所有商品数据
                     this.cartTotalPrice=res.cartTotalPrice //商品总金额
                     this.cartList=list.filter(item=>item.productSelected)  //过滤选中的商品列表
                     this.cartList.map((item)=>{
