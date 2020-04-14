@@ -66,7 +66,7 @@
                         password
                     }).then((res) => {
                         // this.res=res
-                    this.$cookie.set('userId', res.id, {expires: '1Y'});
+                    this.$cookie.set('userId', res.id, {expires: 'Session'});
                     //TODO 保存用户名
                     this.$store.dispatch('saveUserName',res.username)
                     this.$router.push({
