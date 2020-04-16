@@ -32,7 +32,7 @@
                     <div class="item-address">
                         <h2 class="addr-title">收货地址</h2>
                         <div class="addr-list clearfix">
-                            <div class="addr-info" v-for="(item,index) in list" :key="index">
+                            <div class="addr-info" v-for="(item,index) in list" :key="index"  @click="checkIndex=index" :class="{'checked':index==checkIndex}">
                                 <h2>{{item.receiverName}}</h2>
                                 <div class="phone">{{item.receiverPhone}}</div>
                                 <div class="street">{{item.receiverProvince + ' ' + item.receiverCity + ' ' +
@@ -103,7 +103,7 @@
                     </div>
                     <div class="btn-group">
                         <a href="/#/cart" class="btn btn-default btn-large">返回购物车</a>
-                        <a href="javascript:;" class="btn btn-large">去结算</a>
+                        <a href="javascript:;" class="btn btn-large" @click="orderSubmit">去结算</a>
                     </div>
                 </div>
             </div>
@@ -288,6 +288,26 @@
                 this.userAction = 1;
                 this.checkedItem = item;
                 this.showEditModal = true;
+            },
+            //订单提交
+            orderSubmit(){
+                // //如果没有选中的索引 出现提示
+                // eslint-disable-next-line no-console
+                console.log(this.checkIndex)
+                let item=this.list[this.checkIndex]   //地址 0 1 2 如果把第二个删掉
+                // eslint-disable-next-line no-console
+                console.log(item)
+                 if(!item){
+                    this.$message.error('请选择一个收获地址')
+                 }
+                 this.axios.post('/orders',{
+                     shippingId:item.id
+                 }).then((res)=>{
+                     // eslint-disable-next-line no-console
+                     console.log(res.orderNo)
+                     this.$router.push({name:'orderPay',params:{orderNo:res.orderNo}})
+                 })
+
             }
 
         }
@@ -330,6 +350,7 @@
                             padding: 15px 24px;
                             font-size: 14px;
                             color: #757575;
+                            margin-top: 15px;
                         }
 
                         .addr-info {
