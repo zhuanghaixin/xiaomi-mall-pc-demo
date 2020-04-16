@@ -105,18 +105,61 @@
                     </div>
                 </div>
             </div>
+            <Modal
+                    title="新增地址"
+                    btnType="3"
+                    :showModal="showEditModal"
+                    @cancel="showEditModal=false"
+                    @submit="submitAddress"
+            >
+                <template v-slot:body>
+                    <div class="edit-wrap">
+                        <div class="item">
+                            <input type="text" class="input" placeholder="姓名">
+                            <input type="text" class="input" placeholder="手机号">
+                        </div>
+                        <div class="item">
+                            <select name="province">
+                                <option value="北京">北京</option>
+                                <option value="广东省">广东省</option>
+                                <option value="浙江省">浙江省</option>
+                            </select>
+                            <select name="city">
+                                <option value="北京">北京</option>
+                                <option value="深圳市">深圳市</option>
+                                <option value="杭州市">杭州市</option>
+                            </select>
+                            <select name="distract" >
+                                <option value="朝阳区">朝阳区</option>
+                                <option value="东城区">东城区</option>
+                                <option value="海淀区">海淀区</option>
+                                <option value="西城区">西城区</option>
+                                <option value="昌平区">昌平区</option>
+                                <option value="顺义区">顺义区</option>
+                            </select>
+                        </div>
+                        <div class="item">
+                            <textarea name="street" id="" cols="30" rows="10" placeholder="详细地址"></textarea>
+                        </div>
+                        <div class="item">
+                            <input type="text" class="input" placeholder="邮编">
+                        </div>
+                    </div>
+                </template>
+            </Modal>
+            <Modal
+                    title="删除确认"
+                    btnType="3"
+                    :showModal="showDelModal"
+                    @cancel="showDelModal=false"
+                    @submit="submitAddress"
+            >
+                <template v-slot:body>
+                    <p>您确认要删除此地址吗？</p>
+                </template>
+            </Modal>
         </div>
-        <Modal
-                title="删除确认"
-                btnType="1"
-                :showModal="showDelModal"
-                @cancel="showDelModal=false"
-                @submit="submitAddress"
-        >
-            <template v-slot:body>
-             <p>您确认要删除此地址吗？</p>
-            </template>
-        </Modal>
+
     </div>
 </template>
 
@@ -136,11 +179,8 @@
                 checkedItem:{},//选中的商品对象
                 userAction:'',//用户行为 0：新增 1：编辑 2：删除
                 showDelModal:false,//是否显示删除弹框
-                showEditModal:false,//是否显示新增或者编辑弹框
+                showEditModal:true,//是否显示新增或者编辑弹框
                 checkIndex:0//当前收货地址选中索引
-
-
-
             }
         },
         mounted() {
@@ -389,42 +429,41 @@
                     text-align: right;
                 }
             }
-        }
+            .edit-wrap {
+                font-size: 14px;
+                .item {
+                    margin-bottom: 15px;
+                    .input {
+                        display: inline-block;
+                        width: calc(50% - 7px);
+                        height: 40px;
+                        line-height: 40px;
+                        padding-left: 15px;
+                        border: 1px solid #E5E5E5;
+                        &+.input{ //兄弟元素选择器
+                            margin-left: 14px;
+                        }
 
-        .edit-wrap {
-            font-size: 14px;
-
-            .item {
-                margin-bottom: 15px;
-
-                .input {
-                    display: inline-block;
-                    width: 283px;
-                    height: 40px;
-                    line-height: 40px;
-                    padding-left: 15px;
-                    border: 1px solid #E5E5E5;
-
-                    & + .input {
-                        margin-left: 14px;
                     }
-                }
 
-                select {
-                    height: 40px;
-                    line-height: 40px;
-                    border: 1px solid #E5E5E5;
-                    margin-right: 15px;
-                }
+                    select {
+                        height: 40px;
+                        line-height: 40px;
+                        border: 1px solid #E5E5E5;
+                        margin-right: 15px;
+                    }
 
-                textarea {
-                    height: 62px;
-                    width: 100%;
-                    padding: 13px 15px;
-                    box-sizing: border-box;
-                    border: 1px solid #E5E5E5;
+                    textarea {
+                        height: 62px;
+                        width: 100%;
+                        padding: 13px 15px;
+                        box-sizing: border-box;
+                        border: 1px solid #E5E5E5;
+                    }
                 }
             }
         }
+
+
     }
 </style>
