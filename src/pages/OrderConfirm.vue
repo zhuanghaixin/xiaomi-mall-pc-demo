@@ -305,7 +305,7 @@
                  }).then((res)=>{
                      // eslint-disable-next-line no-console
                      console.log(res.orderNo)
-                     this.$router.push({name:'orderPay',params:{orderNo:res.orderNo}})
+                     this.$router.push({name:'order-pay',query:{orderNum:res.orderNo}})
                  })
 
             }

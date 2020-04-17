@@ -54,8 +54,8 @@ export default new Router({
                     component: OrderList
                 },
                 {
-                    path: 'pay/:id',
-                    name: 'orderPay',
+                    path: 'pay',
+                    name: 'order-pay',
                     component: OrderPay
                 },
                 {
@@ -66,9 +66,7 @@ export default new Router({
                     path: 'alipay',
                     name: 'order-alipay',
                     component: AliPay
-                }
-
-            ]
+                }]
         }
     ]
 })
