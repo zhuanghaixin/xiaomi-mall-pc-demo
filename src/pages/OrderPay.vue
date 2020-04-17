@@ -51,29 +51,32 @@
                 </div>
             </div>
         </div>
-        <modal
-                title="支付确认"
-                btnType="3"
-                :showModal="showPayModal"
-                sureText="查看订单"
-                cancelText="未支付"
-                @cancel="showPayModal=false"
-                @submit="goOrderList"
-        >
-            <template v-slot:body>
-                <p>您确认是否完成支付？</p>
-            </template>
-        </modal>
+        <ScanPayCode v-if="showPay" @close="closePayModal" :img="payImg"></ScanPayCode>
+<!--        <modal-->
+<!--                title="支付确认"-->
+<!--                btnType="3"-->
+<!--                :showModal="showPayModal"-->
+<!--                sureText="查看订单"-->
+<!--                cancelText="未支付"-->
+<!--                @cancel="showPayModal=false"-->
+<!--                @submit="goOrderList"-->
+<!--        >-->
+<!--            <template v-slot:body>-->
+<!--                <p>您确认是否完成支付？</p>-->
+<!--            </template>-->
+<!--        </modal>-->
     </div>
 </template>
 
 <script>
-    import Modal from './../components/Modal'
-
+    // import Modal from './../components/Modal'
+    import QRCode from 'qrcode'
+    import ScanPayCode from './../components/ScanPayCode'
     export default {
         name: "OrderPay",
         components: {
-            Modal
+            // Modal,
+            ScanPayCode
         },
         data() {
             return {
@@ -91,7 +94,6 @@
         },
 
         mounted() {
-
             this.goOrderDetail()
 
         },
@@ -111,8 +113,32 @@
             paySubmit(payType){
                 if(payType==1){
                     window.open('/#/order/alipay?orderNum='+this.orderId,'_blank')
-                }
+                }else{
+                    this.axios.post('/pay',{
+                        orderId:this.orderId,
+                        orderName:'Vue仿小米商城',
+                        amount:0.01,
+                        payType:2
+                    }).then((res)=>{
+                       QRCode.toDataURL(res.content)
+                            .then(url => {
+                                // eslint-disable-next-line no-console
+                                console.log(url)
+                                this.showPay=true
+                                this.payImg=url
+                            })
+                            .catch((err) => {
+                                // eslint-disable-next-line no-console
+                                this.$message.error('微信二维码生存失败请稍后重试',err)
 
+                            })
+
+                    })
+                }
+            },
+            //关闭微信弹框
+            closePayModal(){
+                this.showPay=false
             }
         }
     };

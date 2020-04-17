@@ -36,6 +36,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "mockjs": "^1.1.0",
+    "qrcode": "^1.4.4",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
