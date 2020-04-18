@@ -1,5 +1,10 @@
  <template>
   <div class="ali-pay">
+    <OrderHeader title="支付宝支付">
+      <template v-slot:tip>
+        <span>{{tip}}</span>
+      </template>
+    </OrderHeader>
     <Loading v-if="loading"></Loading>
     <div class="form" v-html="content"></div>
   </div>
@@ -7,10 +12,13 @@
 
 <script>
   import Loading from './../components/Loading'
+  import OrderHeader from "./../components/OrderHeader";
 export default {
   name: "AliPay",
   components: {
-    Loading
+    Loading,
+    OrderHeader
+
   },
   data(){
     return {

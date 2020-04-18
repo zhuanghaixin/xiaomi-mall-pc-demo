@@ -1,5 +1,10 @@
 <template>
     <div class="order-pay">
+        <OrderHeader title="订单支付">
+            <template v-slot:tip>
+                <span>请谨防钓鱼链接或诈骗电话，了解更多 </span>
+            </template>
+        </OrderHeader>
         <div class="wrapper">
             <div class="container">
                 <div class="order-wrap">
@@ -72,11 +77,14 @@
     import Modal from './../components/Modal'
     import QRCode from 'qrcode'
     import ScanPayCode from './../components/ScanPayCode'
+    import OrderHeader from "../components/OrderHeader";
+
     export default {
         name: "OrderPay",
         components: {
             Modal,
-            ScanPayCode
+            ScanPayCode,
+            OrderHeader,
         },
         data() {
             return {

@@ -1,5 +1,10 @@
 <template>
     <div class="order-confirm">
+        <OrderHeader title="订单确认">
+            <template v-slot:tip>
+                <span>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算 </span>
+            </template>
+        </OrderHeader>
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              style="position: absolute; width: 0px; height: 0px; overflow: hidden;">
             <defs>
@@ -168,11 +173,13 @@
 
 <script>
     import Modal from "./../components/Modal"
+    import OrderHeader from "../components/OrderHeader";
 
     export default {
         name: "OrderConfirm",
         components: {
-            Modal
+            Modal,
+            OrderHeader,
         },
         data() {
             return {
