@@ -29,6 +29,13 @@ export default {
   },
   mounted(){
     let path=this.$route.path;
+    let x=this.$route
+    // eslint-disable-next-line no-console
+    console.log('x')
+    // eslint-disable-next-line no-console
+    console.log(x)
+    // eslint-disable-next-line no-console
+    console.log('path')
     // eslint-disable-next-line no-console
     console.log(path)
     if(path=='/order/confirm'){

@@ -52,30 +52,30 @@
             </div>
         </div>
         <ScanPayCode v-if="showPay" @close="closePayModal" :img="payImg"></ScanPayCode>
-<!--        <modal-->
-<!--                title="支付确认"-->
-<!--                btnType="3"-->
-<!--                :showModal="showPayModal"-->
-<!--                sureText="查看订单"-->
-<!--                cancelText="未支付"-->
-<!--                @cancel="showPayModal=false"-->
-<!--                @submit="goOrderList"-->
-<!--        >-->
-<!--            <template v-slot:body>-->
-<!--                <p>您确认是否完成支付？</p>-->
-<!--            </template>-->
-<!--        </modal>-->
+        <Modal
+                title="支付确认"
+                btnType="3"
+                :showModal="showPayModal"
+                sureText="查看订单"
+                cancelText="未支付"
+                @cancel="showPayModal=false"
+                @submit="goOrderList"
+        >
+            <template v-slot:body>
+                <p>您确认是否完成支付？</p>
+            </template>
+        </Modal>
     </div>
 </template>
 
 <script>
-    // import Modal from './../components/Modal'
+    import Modal from './../components/Modal'
     import QRCode from 'qrcode'
     import ScanPayCode from './../components/ScanPayCode'
     export default {
         name: "OrderPay",
         components: {
-            // Modal,
+            Modal,
             ScanPayCode
         },
         data() {
@@ -126,6 +126,7 @@
                                 console.log(url)
                                 this.showPay=true
                                 this.payImg=url
+                                this.loopOrderState()
                             })
                             .catch((err) => {
                                 // eslint-disable-next-line no-console
@@ -139,6 +140,30 @@
             //关闭微信弹框
             closePayModal(){
                 this.showPay=false
+                this.showPayModal=true
+                clearInterval(this.T)
+            },
+            //查看订单列表
+            goOrderList(){
+                // eslint-disable-next-line no-console
+                console.log('xxx')
+                this.$router.push({name:'order-list'})
+            },
+            //轮询 询问订单状态
+            loopOrderState(){
+                this.T=setInterval(()=>{
+                    this.axios.get(`/orders/${this.orderId}`).then((res)=>{
+                        // eslint-disable-next-line no-console
+                        console.log('res.status')
+                        // eslint-disable-next-line no-console
+                        console.log(res.status)
+                        if(res.status==20){
+                            clearInterval(this.T)
+                            this.goOrderList()
+                        }
+                    })
+
+                },1000) //根据公司带宽业务压力
             }
         }
     };

@@ -49,6 +49,10 @@ axios.interceptors.response.use(function(response){
     // 当我们输入不正确用户名还是会进入res,所以我们要用Promise.reject()
     return Promise.reject(res);
   }
+},(err)=>{
+  let res=err.response
+  Message.error(res.data.message)
+  return Promise.reject(res)
 })
 
 //注册 加载插件

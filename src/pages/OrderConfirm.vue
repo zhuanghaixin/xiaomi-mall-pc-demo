@@ -39,14 +39,14 @@
                                     item.receiverDistrict + ' ' + item.receiverAddress}}
                                 </div>
                                 <div class="action">
-                                    <a href="javascript:;" class="fl">
-                                        <svg class="icon icon-del" @click="delAddress(item)">
+                                    <a href="javascript:;" class="fl"  @click="delAddress(item)">
+                                        <svg class="icon icon-del">
                                             <use xlink:href="#icon-del"></use>
                                         </svg>
                                     </a>
-                                    <a href="javascript:;" class="fr">
+                                    <a href="javascript:;" class="fr" @click="editAddressModal(item)">
                                         <svg class="icon icon-edit">
-                                            <use xlink:href="#icon-edit" @click="editAddressModal(item)"></use>
+                                            <use xlink:href="#icon-edit" ></use>
                                         </svg>
                                     </a>
                                 </div>
