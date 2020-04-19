@@ -7,6 +7,7 @@ import VueLazyload from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
 import {Message } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import './assets/scss/element-variables.scss';
 import App from './App.vue'
 // import env from './env'
 

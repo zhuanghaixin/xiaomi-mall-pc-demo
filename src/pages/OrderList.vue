@@ -46,6 +46,15 @@
                             </div>
                         </div>
                     </div>
+                    <el-pagination
+                            class="pagition"
+                            background
+                            layout="prev, pager, next"
+                            :total="total"
+                            :pageSize="pageSize"
+                            @current-change="handleChange"
+                    >
+                    </el-pagination>
                     <NoData v-if="!loading && list.length==0"></NoData>
                 </div>
             </div>
@@ -58,18 +67,23 @@
     import OrderHeader from '../components/OrderHeader.vue';
     import Loading from './../components/Loading.vue'
     import NoData from './../components/NoData.vue'
+    import {Pagination} from 'element-ui'
 
     export default {
         name: "OrderList",
         components: {
             OrderHeader,
             Loading,
-            NoData
+            NoData,
+            [Pagination.name]:Pagination
         },
         data() {
             return {
                 list: [],
-                loading:true
+                loading:true,
+                pageSize:10,
+                total:0,
+                pageNum:1
             }
         },
         mounted() {
@@ -77,9 +91,14 @@
         },
         methods: {
             goOrderList(){
-                this.axios.get('/orders/').then((res)=>{
+                this.axios.get('/orders',{
+                    params:{
+                        pageNum:this.pageNum
+                    }
+                }).then((res)=>{
                     this.loading=false
-                    this.list=res.list
+                    this.list= res.list
+                    this.total=res.total
                 })
             },
             goPay(orderNum){
@@ -89,6 +108,10 @@
                         orderNum
                     }
                 })
+            },
+            handleChange(pageNum){
+                this.pageNum=pageNum
+                this.goOrderList()
             }
         }
     };
@@ -154,6 +177,13 @@
                             }
                         }
                     }
+                }
+                .pagition{
+                    text-align:right
+                }
+                .el-pagination.is-background .el-pager li:not(.disabled).active{
+                    background-color:$colorA;
+                    color:#FFF;
                 }
 
             }
