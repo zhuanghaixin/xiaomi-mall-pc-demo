@@ -55,6 +55,10 @@
                             @current-change="handleChange"
                     >
                     </el-pagination>
+                    <div class="load-more" v-if="false">
+                            <el-button type="primary" :loading="loading" @click="loadMore">加载更多</el-button>
+                    </div>
+
                     <NoData v-if="!loading && list.length==0"></NoData>
                 </div>
             </div>
@@ -67,7 +71,7 @@
     import OrderHeader from '../components/OrderHeader.vue';
     import Loading from './../components/Loading.vue'
     import NoData from './../components/NoData.vue'
-    import {Pagination} from 'element-ui'
+    import {Button,Pagination} from 'element-ui'
 
     export default {
         name: "OrderList",
@@ -75,13 +79,14 @@
             OrderHeader,
             Loading,
             NoData,
-            [Pagination.name]:Pagination
+            [Pagination.name]:Pagination,
+            [Button.name]:Button
         },
         data() {
             return {
                 list: [],
                 loading:true,
-                pageSize:10,
+                pageSize:0,
                 total:0,
                 pageNum:1
             }
@@ -90,14 +95,19 @@
             this.goOrderList()
         },
         methods: {
+
             goOrderList(){
+                this.loading=true
                 this.axios.get('/orders',{
                     params:{
-                        pageNum:this.pageNum
+                        pageNum:this.pageNum,
+                        pageSize:4
                     }
                 }).then((res)=>{
                     this.loading=false
-                    this.list= res.list
+                    this.list= res.list  // 分页器
+                    this.pageSize=res.pageSize
+                    // this.list=this.list.concat(res.list) //加载更多2
                     this.total=res.total
                 })
             },
@@ -109,15 +119,22 @@
                     }
                 })
             },
+            //分页器
             handleChange(pageNum){
                 this.pageNum=pageNum
                 this.goOrderList()
+            },
+            //加载更多
+            loadMore(){
+                this.pageNum++
+                this.goOrderList()
             }
+
         }
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import "../assets/scss/base.scss";
 
     .order-list{
@@ -185,6 +202,9 @@
                     background-color:$colorA;
                     color:#FFF;
                 }
+                .load-more{
+                text-align: center;
+            }
 
             }
         }
