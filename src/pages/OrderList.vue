@@ -8,6 +8,7 @@
         <div class="wrapper">
             <div class="container">
                 <div class="order-box">
+                    <Loading v-if="loading"></Loading>
                     <div class="order" v-for="(order,index) in list" :key="index">
                         <div class="order-title">
                             <div class="item-info fl">
@@ -54,15 +55,18 @@
 
 <script>
     import OrderHeader from '../components/OrderHeader.vue';
+    import Loading from './../components/Loading'
 
     export default {
         name: "OrderList",
         components: {
-            OrderHeader
+            OrderHeader,
+            Loading
         },
         data() {
             return {
-                list: []
+                list: [],
+                loading:true
             }
         },
         mounted() {
@@ -71,6 +75,7 @@
         methods: {
             goOrderList(){
                 this.axios.get('/orders/').then((res)=>{
+                    this.loading=false
                     this.list=res.list
                 })
             },
@@ -103,8 +108,7 @@
                         margin-bottom:0;
                     }
                     .order-title{
-                        height: 74px;
-                        line-height: 74px;
+                        @include height(74px,74px);
                         background-color:$colorK;
                         padding:0 43px;
                         font-size:16px;
@@ -139,8 +143,7 @@
                             }
                         }
                         .good-state{
-                            height:145px;
-                            line-height: 145px;
+                            @include height(145px,145px);
                             font-size: 20px;
                             color:$colorA;
                             a{
