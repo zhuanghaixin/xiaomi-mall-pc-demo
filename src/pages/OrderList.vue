@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                    <el-pagination v-if="false"
+                    <el-pagination
                             class="pagition"
                             background
                             layout="prev, pager, next"
@@ -55,7 +55,7 @@
                             @current-change="handleChange"
                     >
                     </el-pagination>
-                    <div class="load-more" v-if="showNextPage">
+                    <div class="load-more" v-if="false">
                         <el-button type="primary" :loading="loading" @click="buttonLoadMore">加载更多</el-button>
                     </div>
                     <div class="scroll-more" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy"
