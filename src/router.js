@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './pages/Home'
 import Index from './pages/index'
-import Product from './pages/Product'
-import Detail from './pages/Detail'
-import Login from './pages/Login'
+// import Product from './pages/Product'
+// import Detail from './pages/Detail'
+// import Login from './pages/Login'
 import Cart from './pages/Cart'
 import Order from './pages/Order'
 import OrderConfirm from './pages/OrderConfirm'
@@ -27,17 +27,18 @@ export default new Router({
             }, {
                 path: '/product/:id',
                 name: 'product',
-                component: Product
-            }, {
+                component: () => import('./pages/Product.vue')
+            },
+            {
                 path: '/detail/:id',
                 name: 'detail',
-                component: Detail
+                component: () => import('./pages/Detail.vue')
             }]
         },
         {
             path: '/login',
             name: 'login',
-            component: Login
+            component: () => import('./pages/Login.vue')
         },
         {
             path: '/cart',
@@ -51,7 +52,8 @@ export default new Router({
             children: [{ //拼写错误 children拼写成childeren
                     path: 'list',
                     name: 'order-list',
-                    component: OrderList
+                    // component:() => import('./pages/OrderList.vue'),
+                    component:OrderList
                 },
                 {
                     path: 'pay',

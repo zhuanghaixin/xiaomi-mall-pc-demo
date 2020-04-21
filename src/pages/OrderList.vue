@@ -71,7 +71,7 @@
 </template>
 
 <script>
-    import OrderHeader from '../components/OrderHeader.vue';
+    import OrderHeader from './../components/OrderHeader.vue';
     import Loading from './../components/Loading.vue'
     import NoData from './../components/NoData.vue'
     import {Button, Pagination} from 'element-ui'
@@ -180,6 +180,7 @@
                 }).then((res) => {
                     this.loading = false
                     this.list=this.list.concat(res.list) //加载更多
+
                     if(res.list==[]){
                         return
                     }
@@ -193,9 +194,11 @@
             },
         }
     };
+
 </script>
 
 <style lang="scss">
+    //设置scoped 出现bug
     @import "../assets/scss/base.scss";
 
     .order-list {

@@ -295,6 +295,7 @@
             },
             addCart(id) {
                 //todo 添加购物车 保存vuex
+
                 this.axios.post('/carts', {
                     productId: id,
                     selected: true
@@ -317,6 +318,7 @@
     /*  position: relative;*/
     /*  bottom: 0px;*/
     /*}*/
+
     @import "../assets/scss/base.scss";
     @import "../assets/scss/mixin.scss";
 
