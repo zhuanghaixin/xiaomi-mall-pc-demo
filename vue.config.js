@@ -31,9 +31,6 @@ module.exports = {
     //生成dest目录  默认是dist目录
     //outputDirL:'dest',
     // 指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径。
-    //indexPath:'index2.html'
-    //是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码。这个值会在 @vue/cli-plugin-eslint 被安装之后生效。
-    // lintOnSave:true
-    // 如果你不需要生产环境的 source map，可以将其设置为 false 以加速生产环境构建。
-    productionSourceMap:false
+    //indexPath:'index.html'
+
 }
