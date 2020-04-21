@@ -34,4 +34,8 @@ module.exports = {
     //indexPath:'index.html'
     // lintOnSave:false,
     // productionSourceMap:true,
+    // 路由真正按需加载
+    chainWebpack:(config)=>{
+        config.plugins.delete('prefetch')
+    }
 }

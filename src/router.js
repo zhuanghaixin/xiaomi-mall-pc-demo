@@ -5,12 +5,13 @@ import Index from './pages/index'
 // import Product from './pages/Product'
 // import Detail from './pages/Detail'
 // import Login from './pages/Login'
-import Cart from './pages/Cart'
-import Order from './pages/Order'
-import OrderConfirm from './pages/OrderConfirm'
-import OrderPay from './pages/OrderPay'
+// import Cart from './pages/Cart'
+// import Order from './pages/Order'
+// import OrderConfirm from './pages/OrderConfirm'
+// import OrderPay from './pages/OrderPay'
+// OrderList确实有bug
 import OrderList from './pages/OrderList'
-import AliPay from './pages/AliPay'
+// import AliPay from './pages/AliPay'
 
 Vue.use(Router);
 
@@ -43,12 +44,12 @@ export default new Router({
         {
             path: '/cart',
             name: 'cart',
-            component: Cart
+            component: () => import('./pages/Cart.vue')
         },
         {
             path: '/order',
             name: 'order',
-            component: Order,
+            component: () => import('./pages/Order.vue'),
             children: [{ //拼写错误 children拼写成childeren
                     path: 'list',
                     name: 'order-list',
@@ -58,16 +59,16 @@ export default new Router({
                 {
                     path: 'pay',
                     name: 'order-pay',
-                    component: OrderPay
+                    component: () => import('./pages/OrderPay.vue')
                 },
                 {
                     path: 'confirm',
                     name: 'order-confirm',
-                    component: OrderConfirm
+                    component: () => import('./pages/OrderConfirm.vue')
                 }, {
                     path: 'alipay',
                     name: 'order-alipay',
-                    component: AliPay
+                    component: () => import('./pages/AliPay.vue')
                 }]
         }
     ]
